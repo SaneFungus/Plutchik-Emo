@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plutchik · Emocje</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body { height: 100%; overflow: hidden; }
+
+body {
+  display: flex; flex-direction: column;
+  background: #08080d; color: #ece8e0; font-family: Lexend, sans-serif;
+  font-size: 16px; line-height: 1.7; letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Header ── */
+.app-hdr { padding: 16px 22px 14px; border-bottom: 1px solid #1a1a24; flex-shrink: 0; position: relative; }
+.app-hdr::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #d4a82a28, transparent); }
+.app-hdr-row { display: flex; justify-content: space-between; align-items: flex-start; }
+.app-hdr-top { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: #807c74; margin-bottom: 4px; }
+.app-hdr-title { font-size: 22px; font-weight: 700; letter-spacing: -0.3px; font-family: 'Playfair Display', Georgia, serif; }
+.app-hdr-title em { color: #d4a82a; font-style: italic; }
+
+.lang-toggle {
+  display: flex; gap: 0; background: #0e0e15; border: 1px solid #1a1a24; border-radius: 8px;
+  overflow: hidden; flex-shrink: 0; margin-top: 2px;
+}
+.lang-toggle button {
+  padding: 6px 12px; background: none; border: none; color: #807c74;
+  font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500;
+  cursor: pointer; transition: all .2s; letter-spacing: 1px;
+}
+.lang-toggle button.on { background: #d4a82a; color: #08080d; font-weight: 700; }
+
+/* ── Nav ── */
+.app-nav { display: flex; gap: 3px; padding: 8px 22px; border-bottom: 1px solid #1a1a24; flex-shrink: 0; }
+.app-nav button {
+  background: none; border: 1px solid transparent; color: #807c74; font-family: Lexend, sans-serif;
+  font-size: 13px; font-weight: 500; padding: 11px 20px; border-radius: 10px; cursor: pointer;
+  transition: all .2s; min-height: 48px;
+}
+.app-nav button:hover { color: #ccc5b8; }
+.app-nav button.on { color: #d4a82a; border-color: #d4a82a30; background: #d4a82a0a; }
+
+/* ── Content scroll area ── */
+.app-cnt { flex: 1; overflow-y: auto; scroll-behavior: smooth; min-height: 0; }
+.app-cnt::-webkit-scrollbar { width: 4px; }
+.app-cnt::-webkit-scrollbar-thumb { background: #807c74; border-radius: 2px; }
+
+/* ── Wheel view ── */
+.wv { display: flex; flex-direction: column; align-items: center; padding: 18px 18px 80px; }
+.wv-quote { font-size: 17px; font-style: italic; color: #ccc5b8; line-height: 1.65; font-family: 'Playfair Display', Georgia, serif; text-align: center; max-width: 440px; }
+.wv-sub { font-family: 'DM Mono', monospace; font-size: 9px; color: #807c74; letter-spacing: 2px; text-transform: uppercase; margin-top: 6px; text-align: center; }
+.wv-hint { font-size: 13px; color: #807c74; margin-top: 8px; text-align: center; font-weight: 400; }
+
+.wheel-container { width: 100%; max-width: 380px; aspect-ratio: 1; }
+.wheel-container svg { width: 100%; height: 100%; display: block; overflow: visible; touch-action: manipulation; }
+
+.wheel-spin { animation: wspin .9s cubic-bezier(.3,0,.2,1); }
+@keyframes wspin { 0% { transform: rotate(0); } 100% { transform: rotate(720deg); } }
+
+/* ── Draw view ── */
+.dv { display: flex; flex-direction: column; align-items: center; padding: 18px 18px 80px; }
+.dv-toggle { display: flex; gap: 2px; margin-bottom: 14px; background: #0e0e15; border-radius: 10px; padding: 4px; border: 1px solid #1a1a24; }
+.dv-toggle button {
+  padding: 11px 24px; background: none; border: none; color: #807c74;
+  font-family: Lexend, sans-serif; font-size: 13px; font-weight: 500; cursor: pointer;
+  border-radius: 8px; transition: all .2s; min-height: 48px;
+}
+.dv-toggle button.on { background: #d4a82a; color: #08080d; font-weight: 600; }
+.dv-btn {
+  padding: 18px 56px; background: none; color: #d4a82a; border: 2px solid #d4a82a;
+  border-radius: 10px; font-family: Lexend, sans-serif; font-size: 15px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all .2s;
+  margin-top: 14px; min-height: 56px;
+}
+.dv-btn:hover { background: #d4a82a; color: #08080d; }
+.dv-btn:active { transform: scale(.97); }
+.dv-btn:disabled { opacity: .3; cursor: wait; }
+
+/* ── Overlay + Modal ── */
+.overlay {
+  position: fixed; inset: 0; background: #08080ddd; z-index: 100;
+  display: flex; align-items: flex-end; justify-content: center;
+  animation: fin .25s ease-out; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+@media (min-width: 520px) { .overlay { align-items: center; } }
+.modal {
+  position: relative; width: 100%; max-width: 580px; max-height: 90vh; max-height: 90dvh;
+  overflow-y: auto; background: #0e0e15; border: 1px solid #1a1a24; border-radius: 18px 18px 0 0;
+}
+@media (min-width: 520px) { .modal { border-radius: 14px; max-height: 84vh; } }
+.modal::-webkit-scrollbar { width: 4px; }
+.modal::-webkit-scrollbar-thumb { background: #807c74; border-radius: 2px; }
+
+/* ── Soma cards ── */
+.soma-card {
+  margin-bottom: 22px; padding: 18px 20px; background: #16161f; border-radius: 10px;
+  border-left: 3px solid var(--ec, #d4a82a);
+}
+.soma-label {
+  font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+  margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+}
+.soma-text {
+  font-size: 16px; line-height: 1.9; color: #ccc5b8; font-weight: 300; letter-spacing: 0.01em;
+}
+
+/* ── Footer ── */
+.app-ftr { padding: 10px 22px; border-top: 1px solid #1a1a24; flex-shrink: 0; }
+.app-ftr p { font-family: 'DM Mono', monospace; font-size: 9px; color: #28283a; letter-spacing: .5px; text-align: center; }
+
+/* ── Utility ── */
+@keyframes fin { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+.fade-in { animation: fin .3s ease-out; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+
+.hidden { display: none !important; }
+
+@media (max-width: 520px) {
+  .app-hdr { padding: 13px 18px 11px; }
+  .app-hdr-title { font-size: 20px; }
+  .app-nav { padding: 6px 18px; }
+  .app-nav button { padding: 10px 16px; }
+  .wv, .dv { padding: 14px 14px 60px; }
+  .soma-card { padding: 16px 16px; }
+  .soma-text { font-size: 17px; line-height: 1.95; }
+}
+</style>
+</head>
+<body>
+
+<header class="app-hdr">
+  <div class="app-hdr-row">
+    <div>
+      <div class="app-hdr-top">Improwizacja · Plutchik</div>
+      <div class="app-hdr-title" id="hdr-title">Emocja jako sposób <em>bycia-w-świecie</em></div>
+    </div>
+    <div class="lang-toggle">
+      <button id="lang-pl" class="on" onclick="setLang('pl')">PL</button>
+      <button id="lang-en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</header>
+
+<nav class="app-nav" role="tablist" id="main-nav"></nav>
+
+<div class="app-cnt" id="app-cnt"></div>
+
+<div class="overlay hidden" id="overlay" onclick="closeModal()">
+  <div class="modal" id="modal" onclick="event.stopPropagation()"></div>
+</div>
+
+<footer class="app-ftr">
+  <p id="footer-text">Emocja nie jest tym, co czuję — jest tym, jak widzę</p>
+</footer>
+
+<script>
+// ─── STATE ──────────────────────────────────────────────────────────────────
+let lang = 'pl';
+let view = 'wheel';
+let drawMode = 'single';
+let drawResult = null;
+let spinning = false;
+let selectedEmotion = null;
+let isMobile = window.innerWidth < 520;
+window.addEventListener('resize', () => { isMobile = window.innerWidth < 520; });
+
+// ─── I18N ───────────────────────────────────────────────────────────────────
+const T = {
+  pl: {
+    hdrTop: 'Improwizacja · Plutchik',
+    hdrTitle: 'Emocja jako sposób <em>bycia-w-świecie</em>',
+    navWheel: 'Koło', navDraw: 'Losuj',
+    wheelQuote: 'Nie gram emocji — wchodzę w sposób percepcji, a emocja wyłania się jako skutek uboczny.',
+    wheelSub: 'Zasada generatywna',
+    wheelHint: 'Dotknij emocji, aby otworzyć instrukcję',
+    wheelLabel: 'Koło Plutchika',
+    wheelCenter1: 'PLUTCHIK', wheelCenter2: '8 EMOCJI',
+    solo: 'Solo', pair: 'Para · Faza IV',
+    draw: 'Losuj', drawing: '···', drawAgain: 'Losuj ponownie',
+    touchHint: 'dotknij — instrukcja',
+    dyadLabel: 'Plutchik nazwałby to:',
+    dyadSub: 'Ale co naprawdę wyłoni się między wami?',
+    tabSoma: 'Instrukcja', tabGrad: 'Gradienty',
+    secBody: 'Ciało w przestrzeni', secAttention: 'Jakość uwagi',
+    secLandscape: 'Krajobraz wewnętrzny', secBreath: 'Oddech',
+    close: 'Zamknij',
+    safetyNote: 'Po ćwiczeniu — kilka minut neutralnego chodzenia, oddychanie, kontakt wzrokowy z innymi. Zawsze — możliwość wyjścia bez tłumaczenia.',
+    footer: 'Emocja nie jest tym, co czuję — jest tym, jak widzę',
+  },
+  en: {
+    hdrTop: 'Improvisation · Plutchik',
+    hdrTitle: 'Emotion as a way of <em>being-in-the-world</em>',
+    navWheel: 'Wheel', navDraw: 'Draw',
+    wheelQuote: "I don't play emotions — I enter a mode of perception, and emotion emerges as a side effect.",
+    wheelSub: 'Generative principle',
+    wheelHint: 'Tap an emotion to open the instructions',
+    wheelLabel: "Plutchik's Wheel",
+    wheelCenter1: 'PLUTCHIK', wheelCenter2: '8 EMOTIONS',
+    solo: 'Solo', pair: 'Pair · Phase IV',
+    draw: 'Draw', drawing: '···', drawAgain: 'Draw again',
+    touchHint: 'tap — instructions',
+    dyadLabel: 'Plutchik would call this:',
+    dyadSub: 'But what will really emerge between you?',
+    tabSoma: 'Instructions', tabGrad: 'Gradients',
+    secBody: 'Body in space', secAttention: 'Quality of attention',
+    secLandscape: 'Inner landscape', secBreath: 'Breath',
+    close: 'Close',
+    safetyNote: 'After the exercise — a few minutes of neutral walking, breathing, eye contact with others. Always — the option to leave without explanation.',
+    footer: "Emotion is not what I feel — it's how I see",
+  }
+};
+function t(key) { return T[lang][key] || T['pl'][key] || key; }
+
+// ─── EMOTIONS DATA ──────────────────────────────────────────────────────────
+const EMOTIONS = [
+  {
+    id: "JOY", color: "#e8b930", icon: "☀",
+    pl: {
+      name: "Radość", short: "Radość", vector: "Na zewnątrz, we wszystkie strony",
+      gradients: { low: "Pogoda ducha", mid: "Radość", high: "Ekstaza" },
+      body: "Poczuj podłogę pod stopami — a potem poczuj, że coś cię od niej lekko odrywa. Nie unosisz się — ale ciężar staje się mniejszy. Klatka piersiowa rozszerza się, jakby w środku robiło się więcej miejsca. Ręce oddalają się od tułowia — nie dlatego, że je unosisz, ale dlatego, że ciało chce zajmować więcej przestrzeni.",
+      attention: "Otwórz oczy. Widzisz szeroko — nie szukasz niczego konkretnego, ale wszystko jest ciekawe. Wzrok jest miękki, nieostry. Kąty pokoju, kolor ścian, światło — wszystko jest lekko jaśniejsze niż powinno.",
+      landscape: "W środku klatki piersiowej jest ciepło, które się rozprzestrzenia. Nie gorąco — ciepło. Jakby coś dojrzałego, pełnego. To ciepło ma ruch — nie chce zostać w środku. Chce się dzielić, przelewać na zewnątrz.",
+      breath: "Pełny, łatwy. Wydech dłuższy niż wdech. Można powiedzieć, że oddech się «uśmiecha».",
+      grad: {
+        low: "Lekki uśmiech wewnątrz. Ciało jest odprężone, ale nie aktywne. Nie szukasz niczego — jest dobrze tak, jak jest.",
+        mid: "Ciepło rozlewa się z klatki piersiowej. Ciało chce się rozszerzać, zajmować więcej przestrzeni. Wzrok jest miękki i szeroki.",
+        high: "Ciało nie może pomieścić tego, co w nim jest. Granice się rozpuszczają — nie wiesz, gdzie kończysz się ty, a zaczyna świat.",
+      },
+    },
+    en: {
+      name: "Joy", short: "Joy", vector: "Outward, in all directions",
+      gradients: { low: "Serenity", mid: "Joy", high: "Ecstasy" },
+      body: "Feel the floor beneath your feet — and then feel something gently lifting you from it. You're not floating — but the weight becomes less. Your chest expands, as if more space is opening inside. Your arms move away from your torso — not because you lift them, but because the body wants to take up more space.",
+      attention: "Open your eyes. You see wide — you're not looking for anything specific, but everything is interesting. Your gaze is soft, unfocused. The corners of the room, the color of walls, the light — everything is slightly brighter than it should be.",
+      landscape: "In the center of your chest there is warmth spreading. Not heat — warmth. As if something ripe, full. This warmth has movement — it doesn't want to stay inside. It wants to share, to overflow outward.",
+      breath: "Full, easy. Exhale longer than inhale. You could say the breath is 'smiling'.",
+      grad: {
+        low: "A slight smile inside. The body is relaxed but not active. You're not looking for anything — it's fine as it is.",
+        mid: "Warmth pours from the chest. The body wants to expand, take up more space. The gaze is soft and wide.",
+        high: "The body cannot contain what's inside it. Boundaries dissolve — you don't know where you end and the world begins.",
+      },
+    },
+  },
+  {
+    id: "TRUST", color: "#7aa648", icon: "◐",
+    pl: {
+      name: "Zaufanie", short: "Zaufanie", vector: "Do przodu, ku drugiemu",
+      gradients: { low: "Akceptacja", mid: "Zaufanie", high: "Podziw" },
+      body: "Przód ciała mięknie. Brzuch, klatka piersiowa, gardło — te miejsca, które zwykle chronisz, odpuszczają osłonę. Poczuj, że jesteś lekko nachylony do przodu — nie dlatego, że się pochylasz, ale dlatego, że coś przed tobą jest warte zbliżenia się. Stopy są stabilne. Ziemia trzyma.",
+      attention: "Uwaga jest spokojna i skoncentrowana — ale nie czujna. Nie skanujesz zagrożeń. Patrzysz na to, co przed tobą, z taką jakością uwagi, z jaką patrzysz na kogoś, kto śpi i komu ufasz. Nie musisz śledzić — możesz po prostu być z.",
+      landscape: "Poczuj, że masz ciężar — ale to jest dobry ciężar. Ciężar kogoś, kto wie, gdzie stoi. Wewnątrz jest coś solidnego, cichego, stabilnego. Jakbyś miał w środku coś, co nie musi się bronić, bo wie, że jest bezpieczne.",
+      breath: "Wolny. Głęboki. Brzuszny. Oddech kogoś, kto nie musi się spieszyć.",
+      grad: {
+        low: "Mogę to przyjąć. Ciało się relaksuje, ale nie angażuje. Nie ma oporu, ale nie ma też ruchu ku.",
+        mid: "Otwieram się ku temu. Przód ciała mięknie, jest ruch do przodu. Gardło jest otwarte, brzuch miękki.",
+        high: "To jest większe ode mnie i chcę się w tym zatracić. Ciało rozszerza się, wzrok mięknie, jest jakość oddania.",
+      },
+    },
+    en: {
+      name: "Trust", short: "Trust", vector: "Forward, toward the other",
+      gradients: { low: "Acceptance", mid: "Trust", high: "Admiration" },
+      body: "The front of the body softens. Belly, chest, throat — the places you usually guard let go of their shields. Feel that you're slightly leaning forward — not because you bend, but because something ahead is worth approaching. Feet are stable. The ground holds.",
+      attention: "Attention is calm and focused — but not vigilant. You're not scanning for threats. You look at what's before you with the quality of attention you'd give to someone sleeping whom you trust. You don't need to track — you can simply be with.",
+      landscape: "Feel that you have weight — but it's good weight. The weight of someone who knows where they stand. Inside is something solid, quiet, stable. As if you have something inside that doesn't need to defend itself, because it knows it's safe.",
+      breath: "Slow. Deep. Abdominal. The breath of someone who doesn't need to hurry.",
+      grad: {
+        low: "I can accept this. The body relaxes but doesn't engage. No resistance, but no movement toward either.",
+        mid: "I'm opening toward it. The front of the body softens, there's movement forward. Throat open, belly soft.",
+        high: "This is bigger than me and I want to lose myself in it. The body expands, the gaze softens, there's a quality of surrender.",
+      },
+    },
+  },
+  {
+    id: "FEAR", color: "#35b882", icon: "◇",
+    pl: {
+      name: "Strach", short: "Strach", vector: "Do tyłu, od źródła",
+      gradients: { low: "Obawa", mid: "Strach", high: "Panika" },
+      body: "Ciężar przenosi się do góry — z brzucha do klatki, z klatki do ramion, z ramion do głowy. Stopy tracą kontakt z podłogą — nie fizycznie, ale jakościowo. Jakbyś mógł potrzebować uciec i ciało się już szykuje. Wszystko się lekko zacieśnia, kurczy. Nie zamykasz się — zbierasz się. Ciało chce być mniejsze, szybsze, gotowe.",
+      attention: "Widzenie peryferykiem nagle staje się bardzo aktywne. Szukasz. Nie wiesz czego — ale coś jest na granicy pola widzenia i jeszcze się nie ujawniło. Wzrok jest ostry, skacze. Uszy słyszą więcej niż zwykle.",
+      landscape: "Jest coś, co nadchodzi, ale nie wiesz co. Jeszcze nie. Gdzieś w żołądku lub w klatce pojawia się chłód, napięcie, elektryczność. Nie ból — napięcie czegoś, co czeka na informację, której jeszcze nie ma.",
+      breath: "Płytki, wysoko w klatce. Albo wstrzymany — jakbyś nasłuchiwał i oddech by ci przeszkadzał.",
+      grad: {
+        low: "Coś jest lekko nie tak. Nie wiesz co. Ciało jest czujne, ale jeszcze spokojne.",
+        mid: "Teraz wiesz, że coś jest. Ciało już wie, że musi być gotowe. Ciężar podnosi się z brzucha do klatki.",
+        high: "Ciało wie i nie może się z tym zmierzyć. Za dużo. Orientacja pęka.",
+      },
+    },
+    en: {
+      name: "Fear", short: "Fear", vector: "Backward, away from the source",
+      gradients: { low: "Apprehension", mid: "Fear", high: "Terror" },
+      body: "Weight shifts upward — from belly to chest, from chest to shoulders, from shoulders to head. Feet lose contact with the floor — not physically, but qualitatively. As if you might need to run and the body is already preparing. Everything tightens slightly, contracts. You're not closing — you're gathering. The body wants to be smaller, faster, ready.",
+      attention: "Peripheral vision suddenly becomes very active. You're searching. You don't know for what — but something is at the edge of your field of vision and hasn't revealed itself yet. The gaze is sharp, jumping. Ears hear more than usual.",
+      landscape: "Something is coming, but you don't know what. Not yet. Somewhere in your stomach or chest, there's cold, tension, electricity. Not pain — the tension of something waiting for information that doesn't exist yet.",
+      breath: "Shallow, high in the chest. Or held — as if you were listening and breathing would interfere.",
+      grad: {
+        low: "Something is slightly off. You don't know what. The body is alert but still calm.",
+        mid: "Now you know something is there. The body already knows it needs to be ready. Weight rises from belly to chest.",
+        high: "The body knows and cannot face it. Too much. Orientation shatters.",
+      },
+    },
+  },
+  {
+    id: "SURPRISE", color: "#42aed4", icon: "✦",
+    pl: {
+      name: "Zaskoczenie", short: "Zaskocz.", vector: "Zatrzymanie, otwarte we wszystkie strony",
+      gradients: { low: "Rozproszenie", mid: "Zaskoczenie", high: "Zdumienie" },
+      body: "Nagłe zatrzymanie. Coś, co robiłeś — jakikolwiek ruch, jakikolwiek plan — nagle zostaje przerwane. Ciało się otwiera gwałtownie: oczy szerzej, klatka szerzej, ręce lekko od tułowia. Jakbyś nagle musiał pomieścić więcej niż przed chwilą. Poczuj ten moment powiększenia.",
+      attention: "Rama, przez którą patrzyłeś na świat, właśnie pękła. Wszystko jest nowe. Uwaga jest całkowicie otwarta, pusta, receptywna — nie szuka jeszcze, bo nie wie, czego szukać. To jest czysty odbiór, przed interpretacją. Dziecko widzi tak, kiedy widzi coś pierwszy raz.",
+      landscape: "W środku jest chwilowa pustka — ale nie straszna. Jasna pustka. Jak flash aparatu — wszystko bieleje na sekundę, a potem świat wraca, ale inny. Między starą ramą a nową jest moment, w którym nie masz żadnej ramy. Zostań w tym momencie.",
+      breath: "Gwałtowny, krótki wdech. A potem pauza. Ciało czeka, co będzie dalej.",
+      grad: {
+        low: "Coś odciąga uwagę. Nie dramatycznie — jak dźwięk z drugiego pokoju.",
+        mid: "Rama pęka. To, co wiedziałeś, nagle nie pasuje. Ciało się otwiera gwałtownie.",
+        high: "Nie możesz się ruszyć. Nie z powodu strachu — z powodu ogromu tego, co widzisz.",
+      },
+    },
+    en: {
+      name: "Surprise", short: "Surprise", vector: "Freeze, open in all directions",
+      gradients: { low: "Distraction", mid: "Surprise", high: "Amazement" },
+      body: "A sudden stop. Whatever you were doing — any movement, any plan — is abruptly interrupted. The body opens violently: eyes wider, chest wider, hands slightly away from the torso. As if you suddenly need to contain more than a moment ago. Feel this moment of expansion.",
+      attention: "The frame through which you viewed the world has just cracked. Everything is new. Attention is completely open, empty, receptive — it's not searching yet, because it doesn't know what to search for. This is pure reception, before interpretation. A child sees this way when seeing something for the first time.",
+      landscape: "Inside there is a momentary emptiness — but not frightening. Bright emptiness. Like a camera flash — everything goes white for a second, then the world returns, but different. Between the old frame and the new one there's a moment when you have no frame at all. Stay in that moment.",
+      breath: "A sudden, short inhale. Then a pause. The body waits for what comes next.",
+      grad: {
+        low: "Something pulls your attention. Not dramatically — like a sound from another room.",
+        mid: "The frame cracks. What you knew suddenly doesn't fit. The body opens violently.",
+        high: "You can't move. Not from fear — from the enormity of what you see.",
+      },
+    },
+  },
+  {
+    id: "SADNESS", color: "#5b82d4", icon: "◠",
+    pl: {
+      name: "Smutek", short: "Smutek", vector: "Do wewnątrz, w dół",
+      gradients: { low: "Zamyślenie", mid: "Smutek", high: "Żałoba" },
+      body: "Ciężar wraca. Ale nie taki jak w zaufaniu — tamten był stabilny. Ten ciągnie w dół. Ramiona opadają, głowa ciężeje, klatka się zamyka — nie jako obrona, lecz jako wycofanie. Ciało traci zainteresowanie przestrzenią. Nie chcesz zajmować miejsca. Nie dlatego, że się boisz — dlatego, że nie ma po co.",
+      attention: "Pole widzenia się zwęża. Obrzeża pokoju tracą znaczenie, rozmywają się. Wzrok opada — ku dołowi, ku podłodze, ku dłoniom. Albo wzrok staje się wewnętrzny — patrzysz, ale nie widzisz tego, co jest przed tobą. Widzisz coś, czego tu nie ma.",
+      landscape: "Coś odeszło. Albo odchodzi. W środku klatki piersiowej jest ciężar, który nie jest fizyczny — jest to ciężar nieobecności. Jakby coś, co było pełne, stało się puste, i ta pustka ma wagę. Wszystko lekko zwalnia. Czas staje się gęsty.",
+      breath: "Wolny, ale płytki. Wdechy są niechętne, jakby ciało nie chciało napełniać się powietrzem. Wydechy długie, westchnienia.",
+      grad: {
+        low: "Lekka melancholia. Świat nie jest zły — jest trochę szary, trochę odległy.",
+        mid: "Ciężar. Coś odeszło lub odchodzi. Klatka piersiowa zamyka się, ramiona opadają.",
+        high: "Ciężar jest tak duży, że ciało chce się złożyć. Kolana miękną. Świat stracił sens.",
+      },
+    },
+    en: {
+      name: "Sadness", short: "Sadness", vector: "Inward, downward",
+      gradients: { low: "Pensiveness", mid: "Sadness", high: "Grief" },
+      body: "Weight returns. But not like in trust — that was stable. This pulls downward. Shoulders drop, the head grows heavy, the chest closes — not as defense, but as withdrawal. The body loses interest in space. You don't want to take up room. Not because you're afraid — because there's no reason to.",
+      attention: "The field of vision narrows. The edges of the room lose meaning, blur. The gaze drops — downward, to the floor, to the hands. Or the gaze turns inward — you're looking, but you don't see what's in front of you. You see something that isn't here.",
+      landscape: "Something has left. Or is leaving. In the center of the chest there's a weight that isn't physical — it's the weight of absence. As if something that was full became empty, and that emptiness has weight. Everything slows slightly. Time becomes thick.",
+      breath: "Slow, but shallow. Inhales are reluctant, as if the body doesn't want to fill itself with air. Exhales long, sighs.",
+      grad: {
+        low: "Light melancholy. The world isn't bad — it's a bit grey, a bit distant.",
+        mid: "Weight. Something has left or is leaving. The chest closes, shoulders drop.",
+        high: "The weight is so great that the body wants to fold. Knees soften. The world has lost its meaning.",
+      },
+    },
+  },
+  {
+    id: "DISGUST", color: "#a05cb8", icon: "⊘",
+    pl: {
+      name: "Wstręt", short: "Wstręt", vector: "Od źródła, wypychanie",
+      gradients: { low: "Znudzenie", mid: "Wstręt", high: "Obrzydzenie" },
+      body: "Ciało odwraca się od. Nie do tyłu — od. Nos, górna warga, twarz odwracają się pierwsze. Potem ramiona. Potem tułów. To jest gest granicy: coś przekroczyło próg tego, co mogę przyjąć, i ciało to wypycha. Poczuj, że twoja skóra staje się barierą — nie chce przepuścić.",
+      attention: "Paradoksalnie ostra — widzisz bardzo dokładnie to, od czego się odwracasz. Wzrok jest skupiony na źródle, ale z jakością «za dużo, za blisko». A potem odwraca się. Nie chcesz tego widzieć, ale nie możesz nie widzieć.",
+      landscape: "Coś jest nie tak. Nie niebezpieczne jak w strachu — złe. Skażone. Wewnątrz jest ruch wypychania — z żołądka, z gardła. Jakby ciało chciało wyrzucić coś, co się do niego dostało. Granica między mną a nie-mną staje się bardzo ostra, twarda.",
+      breath: "Wydech dominuje. Silny, przez nos. Ciało chce pozbyć się powietrza, które było blisko tego źródła. Wdech jest niechętny — nie chcę wpuszczać.",
+      grad: {
+        low: "To mnie nie obchodzi. Ciało się odwraca — nie gwałtownie, raczej z obojętnością.",
+        mid: "Coś przekroczyło granicę. Nos i górna warga odwracają się pierwsze. Ciało buduje barierę.",
+        high: "Ciało chce wyrzucić. Granica między mną a tym jest brutalna, ostateczna.",
+      },
+    },
+    en: {
+      name: "Disgust", short: "Disgust", vector: "Away from the source, pushing out",
+      gradients: { low: "Boredom", mid: "Disgust", high: "Loathing" },
+      body: "The body turns away from. Not backward — from. Nose, upper lip, face turn first. Then shoulders. Then torso. This is the gesture of a boundary: something crossed the threshold of what I can accept, and the body pushes it out. Feel your skin becoming a barrier — it doesn't want to let through.",
+      attention: "Paradoxically sharp — you see very precisely what you're turning away from. The gaze is focused on the source, but with the quality of 'too much, too close.' Then it turns away. You don't want to see it, but you can't not see it.",
+      landscape: "Something is wrong. Not dangerous like in fear — bad. Contaminated. Inside there's a pushing motion — from the stomach, from the throat. As if the body wants to expel something that got in. The boundary between me and not-me becomes very sharp, hard.",
+      breath: "Exhale dominates. Strong, through the nose. The body wants to get rid of the air that was near that source. Inhale is reluctant — I don't want to let in.",
+      grad: {
+        low: "I don't care about this. The body turns away — not violently, rather with indifference.",
+        mid: "Something crossed a boundary. Nose and upper lip turn first. The body builds a barrier.",
+        high: "The body wants to expel. The boundary between me and this is brutal, final.",
+      },
+    },
+  },
+  {
+    id: "ANGER", color: "#e05450", icon: "▲",
+    pl: {
+      name: "Gniew", short: "Gniew", vector: "Do przodu, ku celowi",
+      gradients: { low: "Irytacja", mid: "Gniew", high: "Wściekłość" },
+      body: "Energia idzie do przodu. Klatka piersiowa pręży się, szczęka się zaciska, ręce mają energię — nie do uderzenia (to jest za daleko), ale do trzymania, chwytania, ustalania. Ciało zajmuje więcej przestrzeni, ale inaczej niż w radości — radość rozszerza się we wszystkie strony, gniew rozszerza się ku. Jest cel. Może jeszcze nie wiesz jaki — ale ciało już wie, w którym kierunku.",
+      attention: "Bardzo wąska, bardzo ostra. Laserowa. Wszystko poza obiektem gniewu traci ostrość, staje się nieistotne. Widzisz jedno — i widzisz to z przenikliwością, z którą normalnie nie patrzysz. Gniew jest jak reflektor: oświetla z brutalną jasnością to, na co jest skierowany, i pogrąża w ciemności resztę.",
+      landscape: "Ciepło, ale inne niż w radości. Gorąco. Ciśnienie. Coś w środku rośnie i szuka ujścia. Granica została naruszona — i ciało to wie, zanim umysł zrozumie dlaczego. Jest poczucie «nie» — głębokie, cielesne, niepodważalne. Nie «nie chcę» — «NIE».",
+      breath: "Mocny, przez nos, z widocznym wysiłkiem. Jakby powietrze nie chciało się wpuścić wystarczająco szybko. Nozdrzowe.",
+      grad: {
+        low: "Coś drażni. Nie jest warte walki — ale nie możesz tego ignorować. Szczęka lekko się napina.",
+        mid: "Energia idzie do przodu. Klatka się pręży. Widzisz jeden punkt — ostro, precyzyjnie.",
+        high: "Ciało nie może pomieścić energii. Wszystko jest za ciasne, za wolne. Jest tylko energia szukająca ujścia.",
+      },
+    },
+    en: {
+      name: "Anger", short: "Anger", vector: "Forward, toward the target",
+      gradients: { low: "Annoyance", mid: "Anger", high: "Rage" },
+      body: "Energy goes forward. The chest puffs up, the jaw clenches, the hands have energy — not for hitting (that's too far), but for holding, grasping, establishing. The body takes up more space, but differently than in joy — joy expands in all directions, anger expands toward. There is a target. You may not know what yet — but the body already knows which direction.",
+      attention: "Very narrow, very sharp. Laser-like. Everything outside the object of anger loses focus, becomes irrelevant. You see one thing — and you see it with a penetration you normally don't possess. Anger is like a spotlight: it illuminates with brutal clarity what it's aimed at, and plunges the rest into darkness.",
+      landscape: "Warmth, but different from joy. Heat. Pressure. Something inside is growing and seeking an outlet. A boundary was violated — and the body knows this before the mind understands why. There is a sense of 'no' — deep, bodily, unquestionable. Not 'I don't want' — 'NO.'",
+      breath: "Strong, through the nose, with visible effort. As if the air wouldn't come in fast enough. Nostrils flaring.",
+      grad: {
+        low: "Something irritates. Not worth fighting — but you can't ignore it. The jaw tightens slightly.",
+        mid: "Energy goes forward. The chest puffs up. You see one point — sharp, precise.",
+        high: "The body cannot contain the energy. Everything is too tight, too slow. There is only energy seeking an outlet.",
+      },
+    },
+  },
+  {
+    id: "ANTICIPATION", color: "#d87a2a", icon: "→",
+    pl: {
+      name: "Przeczuwanie", short: "Przeczu.", vector: "Do przodu, skanowanie",
+      gradients: { low: "Zainteresowanie", mid: "Przeczuwanie", high: "Czujność" },
+      body: "Ciężar przenosi się na przodostopy. Ciało pochyla się lekko do przodu — nie ku czemuś konkretnemu, ale ku temu, co będzie. Jest gotowość, sprężystość. Nie napięcie strachu — raczej napięcie łucznika, który naciągnął cięciwę i jeszcze nie puścił. Ciało jest zorganizowane, czujne, zestrzelone.",
+      attention: "Skanowanie. Oczy są aktywne, ale nie niespokojne — szukają z przyjemnością. Uwaga jest zorientowana na przyszłość: nie na to, co jest, ale na to, co zaraz się pojawi. Jest to jakość uwagi myśliwego, który widzi ślady i odczytuje kierunek.",
+      landscape: "Coś się zbliża. Jeszcze nie wiesz co — ale poruszasz się w jego stronę. W środku jest coś cienistego, lekkiego, naładowanego. Nie niepokój — elektryczność. Jakby powietrze przed burzą: nic się jeszcze nie dzieje, ale wszystko jest naładowane tym, że zaraz się wydarzy.",
+      breath: "Lekko wstrzymany. Nie z lęku — z gotowości. Oddech kogoś, kto nasłuchuje, kiedy usłyszy sygnał.",
+      grad: {
+        low: "Coś przyciąga uwagę — lekko, bez naglenia. Oczy się ożywiają. Jest ciekawość.",
+        mid: "Ciężar na przodostopach. Ciało pochyla się ku temu, co będzie. Oczy skanują — aktywnie, z przyjemnością.",
+        high: "Każdy zmysł jest wyostrzony do maksimum. Ciało jest zestrzelone — jak łucznik przed puszczeniem cięciwy.",
+      },
+    },
+    en: {
+      name: "Anticipation", short: "Anticip.", vector: "Forward, scanning",
+      gradients: { low: "Interest", mid: "Anticipation", high: "Vigilance" },
+      body: "Weight shifts to the balls of the feet. The body leans slightly forward — not toward something specific, but toward what will be. There is readiness, springiness. Not the tension of fear — rather the tension of an archer who has drawn the bowstring and not yet released. The body is organized, alert, aligned.",
+      attention: "Scanning. Eyes are active but not anxious — they search with pleasure. Attention is oriented toward the future: not what is, but what is about to appear. It's the quality of attention of a hunter who sees tracks and reads direction.",
+      landscape: "Something is approaching. You don't know what yet — but you're moving toward it. Inside there is something thin, light, charged. Not anxiety — electricity. Like the air before a storm: nothing has happened yet, but everything is charged with the fact that something is about to.",
+      breath: "Slightly held. Not from fear — from readiness. The breath of someone listening for a signal.",
+      grad: {
+        low: "Something catches attention — lightly, without urgency. Eyes come alive. There is curiosity.",
+        mid: "Weight on the balls of the feet. The body leans toward what will be. Eyes scan — actively, with pleasure.",
+        high: "Every sense is sharpened to the maximum. The body is aligned — like an archer before releasing the bowstring.",
+      },
+    },
+  },
+];
+
+// ─── DYADS ──────────────────────────────────────────────────────────────────
+const DYADS = {
+  "ANGER+ANTICIPATION": { pl: "Agresja", en: "Aggression", type: "primary" },
+  "ANTICIPATION+JOY": { pl: "Optymizm", en: "Optimism", type: "primary" },
+  "JOY+TRUST": { pl: "Miłość", en: "Love", type: "primary" },
+  "FEAR+TRUST": { pl: "Uległość", en: "Submission", type: "primary" },
+  "FEAR+SURPRISE": { pl: "Poruszenie", en: "Awe", type: "primary" },
+  "SADNESS+SURPRISE": { pl: "Rozczarowanie", en: "Disapproval", type: "primary" },
+  "DISGUST+SADNESS": { pl: "Żal", en: "Remorse", type: "primary" },
+  "ANGER+DISGUST": { pl: "Pogarda", en: "Contempt", type: "primary" },
+  "FEAR+JOY": { pl: "Poczucie winy", en: "Guilt", type: "secondary" },
+  "SURPRISE+TRUST": { pl: "Ciekawość", en: "Curiosity", type: "secondary" },
+  "FEAR+SADNESS": { pl: "Rozpacz", en: "Despair", type: "secondary" },
+  "DISGUST+SURPRISE": { pl: "Szok", en: "Shock", type: "secondary" },
+  "ANGER+SADNESS": { pl: "Cierpienie", en: "Suffering", type: "secondary" },
+  "ANTICIPATION+DISGUST": { pl: "Cynizm", en: "Cynicism", type: "secondary" },
+  "ANGER+JOY": { pl: "Duma", en: "Pride", type: "secondary" },
+  "ANTICIPATION+TRUST": { pl: "Fatalizm", en: "Fatalism", type: "secondary" },
+  "JOY+SADNESS": { pl: "Konflikt", en: "Conflict", type: "opposite" },
+  "DISGUST+TRUST": { pl: "Konflikt", en: "Conflict", type: "opposite" },
+  "ANGER+FEAR": { pl: "Konflikt", en: "Conflict", type: "opposite" },
+  "ANTICIPATION+SURPRISE": { pl: "Konflikt", en: "Conflict", type: "opposite" },
+};
+
+function getDyad(id1, id2) {
+  if (id1 === id2) return null;
+  const key = [id1, id2].sort().join("+");
+  const d = DYADS[key];
+  return d ? { name: d[lang], type: d.type } : null;
+}
+
+function em(emotion) { return emotion[lang]; }
+
+// ─── WHEEL GEOMETRY ─────────────────────────────────────────────────────────
+const WCX = 200, WCY = 200;
+function wPolar(r, deg) {
+  const rad = (deg - 90) * Math.PI / 180;
+  return { x: WCX + r * Math.cos(rad), y: WCY + r * Math.sin(rad) };
+}
+function wArc(r1, r2, startDeg, endDeg) {
+  const f = n => n.toFixed(2);
+  const a = wPolar(r1, startDeg), b = wPolar(r1, endDeg);
+  const c = wPolar(r2, endDeg), d = wPolar(r2, startDeg);
+  const lg = (endDeg - startDeg) > 180 ? 1 : 0;
+  return `M${f(a.x)},${f(a.y)} A${r1},${r1},0,${lg},1,${f(b.x)},${f(b.y)} L${f(c.x)},${f(c.y)} A${r2},${r2},0,${lg},0,${f(d.x)},${f(d.y)}Z`;
+}
+
+// ─── SVG ICON STRINGS ───────────────────────────────────────────────────────
+const ICONS = {
+  body: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="12" y1="16" x2="8" y2="22"/><line x1="12" y1="16" x2="16" y2="22"/></svg>',
+  attention: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/></svg>',
+  landscape: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a7 7 0 0 0 0 20"/><path d="M12 2a7 7 0 0 1 0 20"/><line x1="2" y1="12" x2="22" y2="12"/></svg>',
+  breath: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg>',
+};
+
+// ─── RENDER WHEEL SVG ───────────────────────────────────────────────────────
+function renderWheelSVG(opts = {}) {
+  const { drawnIds, spinClass } = opts;
+  const RINGS = [
+    { r1: 34, r2: 72, opDef: 0.25, opSel: 0.50, opDim: 0.04 },
+    { r1: 75, r2: 113, opDef: 0.50, opSel: 0.75, opDim: 0.04 },
+    { r1: 116, r2: 155, opDef: 0.78, opSel: 1.00, opDim: 0.04 },
+  ];
+  const GAP = 2.8;
+  let defs = '';
+  EMOTIONS.forEach(e => {
+    defs += `<filter id="g-${e.id}" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceGraphic" stdDeviation="7" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>`;
+  });
+
+  let petals = '';
+  EMOTIONS.forEach((e, i) => {
+    const midDeg = i * 45, startDeg = midDeg - 22.5 + GAP, endDeg = midDeg + 22.5 - GAP;
+    const lp = wPolar(175, midDeg);
+    const isDrawn = drawnIds && drawnIds.includes(e.id);
+    const anyActive = drawnIds && drawnIds.length > 0;
+    const dimmed = anyActive && !isDrawn;
+    const getOp = ring => isDrawn ? ring.opSel : dimmed ? ring.opDim : ring.opDef;
+
+    petals += `<g data-eid="${e.id}" filter="${isDrawn ? `url(#g-${e.id})` : ''}" style="cursor:pointer" role="button" tabindex="0">`;
+    petals += `<path d="${wArc(30, 160, startDeg - 3, endDeg + 3)}" fill="transparent"/>`;
+    RINGS.forEach((ring, ri) => {
+      petals += `<path d="${wArc(ring.r1, ring.r2, startDeg, endDeg)}" fill="${e.color}" fill-opacity="${getOp(ring)}" stroke="${isDrawn && ri === 2 ? e.color : 'none'}" stroke-width="${isDrawn ? 1.5 : 0}" stroke-opacity="0.5" style="transition:fill-opacity .35s"/>`;
+    });
+    const fill = isDrawn ? e.color : dimmed ? '#252530' : '#78756e';
+    const fs = isDrawn ? '13.5' : '11.5';
+    const fw = isDrawn ? '700' : '500';
+    petals += `<text x="${lp.x}" y="${lp.y}" text-anchor="middle" dominant-baseline="central" fill="${fill}" font-size="${fs}" font-weight="${fw}" font-family="Lexend, sans-serif" letter-spacing="0.3" style="transition:all .35s;pointer-events:none">${em(e).name}</text>`;
+    petals += `</g>`;
+  });
+
+  return `<div class="wheel-container"><svg viewBox="0 0 400 400" class="${spinClass || ''}" role="img" aria-label="${t('wheelLabel')}">
+    <defs>${defs}</defs>
+    <circle cx="${WCX}" cy="${WCY}" r="73" fill="none" stroke="#1e1e28" stroke-width="1"/>
+    <circle cx="${WCX}" cy="${WCY}" r="114" fill="none" stroke="#1e1e28" stroke-width="1"/>
+    <circle cx="${WCX}" cy="${WCY}" r="30" fill="#0c0c12" stroke="#1e1e28" stroke-width="1"/>
+    <text x="${WCX}" y="${WCY - 1}" text-anchor="middle" fill="#44444f" font-size="7" font-family="Lexend, sans-serif" font-weight="600" letter-spacing="2.5">${t('wheelCenter1')}</text>
+    <text x="${WCX}" y="${WCY + 10}" text-anchor="middle" fill="#33333d" font-size="6" font-family="Lexend, sans-serif" letter-spacing="1.5">${t('wheelCenter2')}</text>
+    ${petals}
+  </svg></div>`;
+}
+
+// ─── RENDER MODAL ───────────────────────────────────────────────────────────
+let modalTab = 'soma';
+let modalGrad = 'mid';
+
+function openModal(emotionId) {
+  modalTab = 'soma';
+  modalGrad = 'mid';
+  renderModal(emotionId);
+  document.getElementById('overlay').classList.remove('hidden');
+}
+
+function closeModal() {
+  document.getElementById('overlay').classList.add('hidden');
+}
+
+function renderModal(emotionId) {
+  const emotion = EMOTIONS.find(e => e.id === emotionId);
+  if (!emotion) return;
+  const d = em(emotion);
+  const g = d.gradients;
+
+  const sections = [
+    { id: 'body', label: t('secBody'), text: d.body },
+    { id: 'attention', label: t('secAttention'), text: d.attention },
+    { id: 'landscape', label: t('secLandscape'), text: d.landscape },
+  ];
+
+  let somaHTML = '';
+  sections.forEach(s => {
+    somaHTML += `<div class="soma-card" style="--ec:${emotion.color}">
+      <div class="soma-label" style="color:${emotion.color}">
+        <span style="display:inline-flex;align-items:center;opacity:.7">${ICONS[s.id]}</span>
+        <span>${s.label}</span>
+      </div>
+      <p class="soma-text">${s.text}</p>
+    </div>`;
+  });
+  somaHTML += `<div class="soma-card" style="--ec:${emotion.color};border-left-color:${emotion.color}88">
+    <div class="soma-label" style="color:${emotion.color}">
+      <span style="display:inline-flex;align-items:center;opacity:.7">${ICONS.breath}</span>
+      <span>${t('secBreath')}</span>
+    </div>
+    <p class="soma-text">${d.breath}</p>
+  </div>`;
+
+  const gradLevels = ['low', 'mid', 'high'];
+  let gradBtns = '';
+  gradLevels.forEach((l, i) => {
+    const isOn = modalGrad === l;
+    gradBtns += `<button onclick="modalGrad='${l}';renderModal('${emotionId}')" style="
+      flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;
+      padding:16px 8px;background:${isOn ? emotion.color : '#16161f'};
+      border:1px solid ${isOn ? emotion.color : '#1a1a24'};border-radius:10px;
+      cursor:pointer;transition:all .25s;color:${isOn ? '#0a0a0f' : '#807c74'};
+      font-family:Lexend,sans-serif;min-height:60px;font-weight:${isOn ? 700 : 400};
+    ">
+      <span style="font-family:'DM Mono',monospace;font-size:11px;opacity:.5">${i + 1}</span>
+      <span style="font-size:15px;font-weight:600">${g[l]}</span>
+    </button>`;
+  });
+
+  const tabBtnStyle = (id) => `
+    background:none;border:none;border-bottom:2px solid ${modalTab === id ? emotion.color : 'transparent'};
+    color:${modalTab === id ? emotion.color : '#807c74'};font-size:13px;font-weight:500;
+    font-family:Lexend,sans-serif;padding:14px 16px;cursor:pointer;transition:all .2s;
+    min-height:48px;letter-spacing:.3px;
+  `;
+
+  document.getElementById('modal').innerHTML = `
+    <div style="position:sticky;top:0;left:0;right:0;height:4px;background:${emotion.color};border-radius:18px 18px 0 0;z-index:1"></div>
+    <div style="padding:22px 22px 14px;display:flex;justify-content:space-between;align-items:flex-start">
+      <div>
+        <div style="font-size:28px;margin-bottom:4px;color:${emotion.color}">${emotion.icon}</div>
+        <div style="font-size:30px;font-weight:700;color:${emotion.color};font-family:'Playfair Display',Georgia,serif">${d.name}</div>
+        <div style="font-family:'DM Mono',monospace;font-size:12px;color:#807c74;letter-spacing:1px">${lang === 'pl' ? emotion.en.name : emotion.pl.name}</div>
+        <div style="font-size:13px;color:#807c74;margin-top:3px;font-weight:400">${d.vector}</div>
+      </div>
+      <button onclick="closeModal()" aria-label="${t('close')}" style="background:none;border:none;color:#807c74;font-size:26px;cursor:pointer;padding:4px 10px;font-family:'DM Mono',monospace;min-width:48px;min-height:48px;display:flex;align-items:center;justify-content:center">×</button>
+    </div>
+    <div style="display:flex;gap:0;padding:0 22px;border-bottom:1px solid #1a1a24">
+      <button onclick="modalTab='soma';renderModal('${emotionId}')" style="${tabBtnStyle('soma')}">${t('tabSoma')}</button>
+      <button onclick="modalTab='grad';renderModal('${emotionId}')" style="${tabBtnStyle('grad')}">${t('tabGrad')}</button>
+    </div>
+    <div style="padding:24px 22px 12px">
+      ${modalTab === 'soma' ? `<div class="fade-in">${somaHTML}</div>` : `
+        <div class="fade-in">
+          <div style="display:flex;gap:8px;margin-bottom:22px">${gradBtns}</div>
+          <div style="padding:20px;background:#16161f;border-radius:10px">
+            <p class="soma-text">${d.grad[modalGrad]}</p>
+          </div>
+        </div>
+      `}
+    </div>
+    <div style="padding:16px 22px 22px;display:flex;gap:10px;align-items:flex-start">
+      <span style="color:#a85a48;font-size:16px;flex-shrink:0;margin-top:2px">◉</span>
+      <span style="font-size:13px;line-height:1.7;color:#807c74;font-weight:300">${t('safetyNote')}</span>
+    </div>
+  `;
+}
+
+// ─── RENDER NAV ─────────────────────────────────────────────────────────────
+function renderNav() {
+  const items = [
+    { id: 'wheel', label: t('navWheel') },
+    { id: 'draw', label: t('navDraw') },
+  ];
+  document.getElementById('main-nav').innerHTML = items.map(n =>
+    `<button class="${view === n.id ? 'on' : ''}" onclick="switchView('${n.id}')">${n.label}</button>`
+  ).join('');
+}
+
+function switchView(v) {
+  view = v;
+  selectedEmotion = null;
+  drawResult = null;
+  spinning = false;
+  renderNav();
+  renderContent();
+  document.getElementById('app-cnt').scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ─── RENDER CONTENT ─────────────────────────────────────────────────────────
+function renderContent() {
+  const cnt = document.getElementById('app-cnt');
+  if (view === 'wheel') {
+    cnt.innerHTML = `
+      <div class="wv">
+        <div style="margin-bottom:10px">
+          <div class="wv-quote">${t('wheelQuote')}</div>
+          <div class="wv-sub">${t('wheelSub')}</div>
+        </div>
+        ${renderWheelSVG()}
+        <div class="wv-hint">${t('wheelHint')}</div>
+      </div>
+    `;
+    // Attach click handlers to wheel petals
+    cnt.querySelectorAll('[data-eid]').forEach(g => {
+      g.addEventListener('click', () => openModal(g.dataset.eid));
+      g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(g.dataset.eid); } });
+    });
+  } else if (view === 'draw') {
+    renderDrawView();
+  }
+}
+
+function renderDrawView() {
+  const cnt = document.getElementById('app-cnt');
+  let html = '<div class="dv">';
+
+  // Toggle
+  html += `<div class="dv-toggle">
+    <button class="${drawMode === 'single' ? 'on' : ''}" onclick="drawMode='single';drawResult=null;renderDrawView()">${t('solo')}</button>
+    <button class="${drawMode === 'pair' ? 'on' : ''}" onclick="drawMode='pair';drawResult=null;renderDrawView()">${t('pair')}</button>
+  </div>`;
+
+  // Wheel
+  html += renderWheelSVG({
+    drawnIds: drawResult ? drawResult.ids : undefined,
+    spinClass: spinning ? 'wheel-spin' : ''
+  });
+
+  // Result
+  if (drawResult) {
+    html += '<div class="fade-in" style="text-align:center;margin-top:18px">';
+    if (drawResult.type === 'single') {
+      const e = drawResult.emotion;
+      const d = em(e);
+      html += `<button onclick="openModal('${e.id}')" style="
+        display:inline-flex;flex-direction:column;align-items:center;gap:3px;
+        background:none;border:1px solid transparent;border-radius:10px;
+        padding:10px 18px;cursor:pointer;transition:all .22s;color:${e.color};
+      ">
+        <div style="font-size:38px;font-weight:700;font-family:'Playfair Display',Georgia,serif">${d.name}</div>
+        <div style="font-family:'DM Mono',monospace;font-size:12px;opacity:.45;letter-spacing:1px">${lang === 'pl' ? e.en.name : e.pl.name}</div>
+        <div style="font-size:13px;color:#807c74;margin:10px 0">${d.vector}</div>
+        <span style="font-size:11px;opacity:.45">${t('touchHint')}</span>
+      </button>`;
+    } else {
+      const e1 = drawResult.e1, e2 = drawResult.e2;
+      const d1 = em(e1), d2 = em(e2);
+      html += `<div style="display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:14px">
+        <button onclick="openModal('${e1.id}')" style="display:inline-flex;flex-direction:column;align-items:center;background:none;border:1px solid transparent;border-radius:10px;padding:10px 18px;cursor:pointer;color:${e1.color}">
+          <div style="font-size:30px;font-weight:700;font-family:'Playfair Display',Georgia,serif">${d1.name}</div>
+          <div style="font-family:'DM Mono',monospace;font-size:11px;opacity:.45">${lang === 'pl' ? e1.en.name : e1.pl.name}</div>
+          <span style="font-size:11px;opacity:.45;margin-top:4px">${t('touchHint')}</span>
+        </button>
+        <div style="font-family:'DM Mono',monospace;font-size:22px;color:#807c74">×</div>
+        <button onclick="openModal('${e2.id}')" style="display:inline-flex;flex-direction:column;align-items:center;background:none;border:1px solid transparent;border-radius:10px;padding:10px 18px;cursor:pointer;color:${e2.color}">
+          <div style="font-size:30px;font-weight:700;font-family:'Playfair Display',Georgia,serif">${d2.name}</div>
+          <div style="font-family:'DM Mono',monospace;font-size:11px;opacity:.45">${lang === 'pl' ? e2.en.name : e2.pl.name}</div>
+          <span style="font-size:11px;opacity:.45;margin-top:4px">${t('touchHint')}</span>
+        </button>
+      </div>`;
+      if (drawResult.dyad) {
+        html += `<div style="padding:16px 0;border-top:1px solid #1a1a24;margin-bottom:16px">
+          <span style="display:block;font-family:'DM Mono',monospace;font-size:10px;color:#807c74;letter-spacing:1px;margin-bottom:3px">${t('dyadLabel')}</span>
+          <span style="display:block;font-size:28px;font-weight:700;color:#d4a82a;margin-bottom:5px;font-family:'Playfair Display',Georgia,serif">${drawResult.dyad.name}</span>
+          <span style="display:block;font-size:15px;font-style:italic;color:#807c74;font-family:'Playfair Display',Georgia,serif">${t('dyadSub')}</span>
+        </div>`;
+      }
+    }
+    html += `<button onclick="drawResult=null;renderDrawView()" style="
+      background:none;border:1px solid #2a2a36;color:#807c74;font-size:13px;
+      font-weight:500;padding:12px 26px;border-radius:10px;cursor:pointer;min-height:48px;
+      transition:all .2s;font-family:Lexend,sans-serif;
+    ">${t('drawAgain')}</button>`;
+    html += '</div>';
+  } else {
+    html += `<button class="dv-btn" onclick="handleDraw()" ${spinning ? 'disabled' : ''}>${spinning ? t('drawing') : t('draw')}</button>`;
+  }
+
+  html += '</div>';
+  cnt.innerHTML = html;
+}
+
+function handleDraw() {
+  drawResult = null;
+  spinning = true;
+  renderDrawView();
+  setTimeout(() => {
+    if (drawMode === 'single') {
+      const e = EMOTIONS[Math.floor(Math.random() * EMOTIONS.length)];
+      drawResult = { type: 'single', emotion: e, ids: [e.id] };
+    } else {
+      const e1 = EMOTIONS[Math.floor(Math.random() * EMOTIONS.length)];
+      let e2; do { e2 = EMOTIONS[Math.floor(Math.random() * EMOTIONS.length)]; } while (e2.id === e1.id);
+      drawResult = { type: 'pair', e1, e2, dyad: getDyad(e1.id, e2.id), ids: [e1.id, e2.id] };
+    }
+    spinning = false;
+    renderDrawView();
+  }, 900);
+}
+
+// ─── LANGUAGE ───────────────────────────────────────────────────────────────
+function setLang(l) {
+  lang = l;
+  document.documentElement.lang = l;
+  document.getElementById('lang-pl').className = l === 'pl' ? 'on' : '';
+  document.getElementById('lang-en').className = l === 'en' ? 'on' : '';
+  document.querySelector('.app-hdr-top').textContent = t('hdrTop');
+  document.getElementById('hdr-title').innerHTML = t('hdrTitle');
+  document.getElementById('footer-text').textContent = t('footer');
+  // Re-render dyad if present
+  if (drawResult && drawResult.type === 'pair') {
+    drawResult.dyad = getDyad(drawResult.e1.id, drawResult.e2.id);
+  }
+  renderNav();
+  renderContent();
+}
+
+// ─── KEYBOARD ───────────────────────────────────────────────────────────────
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
+
+// ─── INIT ───────────────────────────────────────────────────────────────────
+renderNav();
+renderContent();
+</script>
+</body>
+</html>
