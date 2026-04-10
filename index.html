@@ -140,11 +140,11 @@ body {
   <div class="app-hdr-row">
     <div>
       <div class="app-hdr-top">Improwizacja · Plutchik</div>
-      <div class="app-hdr-title" id="hdr-title">Emocja jako sposób <em>bycia-w-świecie</em></div>
+      <div class="app-hdr-title" id="hdr-title">Emocja jako spos&#xF3;b <em>bycia-w-&#x15B;wiecie</em></div>
     </div>
     <div class="lang-toggle">
       <button id="lang-pl" class="on" onclick="setLang('pl')">PL</button>
-      <button id="lang-en" onclick="setLang('en')">EN</button>
+      <button id="lang-de" onclick="setLang('de')">DE</button>
     </div>
   </div>
 </header>
@@ -158,7 +158,7 @@ body {
 </div>
 
 <footer class="app-ftr">
-  <p id="footer-text">Emocja nie jest tym, co czuję — jest tym, jak widzę</p>
+  <p id="footer-text">Emocja nie jest tym, co czuj&#x119; &#x2014; jest tym, jak widz&#x119;</p>
 </footer>
 
 <script>
@@ -175,46 +175,46 @@ window.addEventListener('resize', () => { isMobile = window.innerWidth < 520; })
 // ─── I18N ───────────────────────────────────────────────────────────────────
 const T = {
   pl: {
-    hdrTop: 'Improwizacja · Plutchik',
-    hdrTitle: 'Emocja jako sposób <em>bycia-w-świecie</em>',
-    navWheel: 'Koło', navDraw: 'Losuj',
-    wheelQuote: 'Nie gram emocji — wchodzę w sposób percepcji, a emocja wyłania się jako skutek uboczny.',
+    hdrTop: 'Improwizacja \u00B7 Plutchik',
+    hdrTitle: 'Emocja jako spos\u00F3b <em>bycia-w-\u015Bwiecie</em>',
+    navWheel: 'Ko\u0142o', navDraw: 'Losuj',
+    wheelQuote: 'Nie gram emocji \u2014 wchodz\u0119 w spos\u00F3b percepcji, a emocja wy\u0142ania si\u0119 jako skutek uboczny.',
     wheelSub: 'Zasada generatywna',
-    wheelHint: 'Dotknij emocji, aby otworzyć instrukcję',
-    wheelLabel: 'Koło Plutchika',
+    wheelHint: 'Dotknij emocji, aby otworzy\u0107 instrukcj\u0119',
+    wheelLabel: 'Ko\u0142o Plutchika',
     wheelCenter1: 'PLUTCHIK', wheelCenter2: '8 EMOCJI',
-    solo: 'Solo', pair: 'Para · Faza IV',
-    draw: 'Losuj', drawing: '···', drawAgain: 'Losuj ponownie',
-    touchHint: 'dotknij — instrukcja',
-    dyadLabel: 'Plutchik nazwałby to:',
-    dyadSub: 'Ale co naprawdę wyłoni się między wami?',
+    solo: 'Solo', pair: 'Para \u00B7 Faza IV',
+    draw: 'Losuj', drawing: '\u00B7\u00B7\u00B7', drawAgain: 'Losuj ponownie',
+    touchHint: 'dotknij \u2014 instrukcja',
+    dyadLabel: 'Plutchik nazwa\u0142by to:',
+    dyadSub: 'Ale co naprawd\u0119 wy\u0142oni si\u0119 mi\u0119dzy wami?',
     tabSoma: 'Instrukcja', tabGrad: 'Gradienty',
-    secBody: 'Ciało w przestrzeni', secAttention: 'Jakość uwagi',
-    secLandscape: 'Krajobraz wewnętrzny', secBreath: 'Oddech',
+    secBody: 'Cia\u0142o w przestrzeni', secAttention: 'Jako\u015B\u0107 uwagi',
+    secLandscape: 'Krajobraz wewn\u0119trzny', secBreath: 'Oddech',
     close: 'Zamknij',
-    safetyNote: 'Po ćwiczeniu — kilka minut neutralnego chodzenia, oddychanie, kontakt wzrokowy z innymi. Zawsze — możliwość wyjścia bez tłumaczenia.',
-    footer: 'Emocja nie jest tym, co czuję — jest tym, jak widzę',
+    safetyNote: 'Po \u0107wiczeniu \u2014 kilka minut neutralnego chodzenia, oddychanie, kontakt wzrokowy z innymi. Zawsze \u2014 mo\u017Cliwo\u015B\u0107 wyj\u015Bcia bez t\u0142umaczenia.',
+    footer: 'Emocja nie jest tym, co czuj\u0119 \u2014 jest tym, jak widz\u0119',
   },
-  en: {
-    hdrTop: 'Improvisation · Plutchik',
-    hdrTitle: 'Emotion as a way of <em>being-in-the-world</em>',
-    navWheel: 'Wheel', navDraw: 'Draw',
-    wheelQuote: "I don't play emotions — I enter a mode of perception, and emotion emerges as a side effect.",
-    wheelSub: 'Generative principle',
-    wheelHint: 'Tap an emotion to open the instructions',
-    wheelLabel: "Plutchik's Wheel",
-    wheelCenter1: 'PLUTCHIK', wheelCenter2: '8 EMOTIONS',
-    solo: 'Solo', pair: 'Pair · Phase IV',
-    draw: 'Draw', drawing: '···', drawAgain: 'Draw again',
-    touchHint: 'tap — instructions',
-    dyadLabel: 'Plutchik would call this:',
-    dyadSub: 'But what will really emerge between you?',
-    tabSoma: 'Instructions', tabGrad: 'Gradients',
-    secBody: 'Body in space', secAttention: 'Quality of attention',
-    secLandscape: 'Inner landscape', secBreath: 'Breath',
-    close: 'Close',
-    safetyNote: 'After the exercise — a few minutes of neutral walking, breathing, eye contact with others. Always — the option to leave without explanation.',
-    footer: "Emotion is not what I feel — it's how I see",
+  de: {
+    hdrTop: 'Improvisation \u00B7 Plutchik',
+    hdrTitle: 'Emotion als Art des <em>In-der-Welt-Seins</em>',
+    navWheel: 'Rad', navDraw: 'Ziehen',
+    wheelQuote: 'Ich spiele keine Emotionen \u2014 ich trete in eine Wahrnehmungsweise ein, und die Emotion entsteht als Nebeneffekt.',
+    wheelSub: 'Generatives Prinzip',
+    wheelHint: 'Ber\u00FChre eine Emotion, um die Anleitung zu \u00F6ffnen',
+    wheelLabel: 'Plutchiks Rad',
+    wheelCenter1: 'PLUTCHIK', wheelCenter2: '8 EMOTIONEN',
+    solo: 'Solo', pair: 'Paar \u00B7 Phase IV',
+    draw: 'Ziehen', drawing: '\u00B7\u00B7\u00B7', drawAgain: 'Erneut ziehen',
+    touchHint: 'ber\u00FChren \u2014 Anleitung',
+    dyadLabel: 'Plutchik w\u00FCrde es nennen:',
+    dyadSub: 'Aber was wird wirklich zwischen euch entstehen?',
+    tabSoma: 'Anleitung', tabGrad: 'Abstufungen',
+    secBody: 'K\u00F6rper im Raum', secAttention: 'Qualit\u00E4t der Aufmerksamkeit',
+    secLandscape: 'Innere Landschaft', secBreath: 'Atem',
+    close: 'Schlie\u00DFen',
+    safetyNote: 'Nach der \u00DCbung \u2014 einige Minuten neutrales Gehen, Atmen, Blickkontakt mit anderen. Immer \u2014 die M\u00F6glichkeit, ohne Erkl\u00E4rung zu gehen.',
+    footer: 'Emotion ist nicht das, was ich f\u00FChle \u2014 sie ist die Art, wie ich sehe',
   }
 };
 function t(key) { return T[lang][key] || T['pl'][key] || key; }
@@ -222,234 +222,234 @@ function t(key) { return T[lang][key] || T['pl'][key] || key; }
 // ─── EMOTIONS DATA ──────────────────────────────────────────────────────────
 const EMOTIONS = [
   {
-    id: "JOY", color: "#e8b930", icon: "☀",
+    id: "JOY", color: "#e8b930", icon: "\u2600",
     pl: {
-      name: "Radość", short: "Radość", vector: "Na zewnątrz, we wszystkie strony",
-      gradients: { low: "Pogoda ducha", mid: "Radość", high: "Ekstaza" },
-      body: "Poczuj podłogę pod stopami — a potem poczuj, że coś cię od niej lekko odrywa. Nie unosisz się — ale ciężar staje się mniejszy. Klatka piersiowa rozszerza się, jakby w środku robiło się więcej miejsca. Ręce oddalają się od tułowia — nie dlatego, że je unosisz, ale dlatego, że ciało chce zajmować więcej przestrzeni.",
-      attention: "Otwórz oczy. Widzisz szeroko — nie szukasz niczego konkretnego, ale wszystko jest ciekawe. Wzrok jest miękki, nieostry. Kąty pokoju, kolor ścian, światło — wszystko jest lekko jaśniejsze niż powinno.",
-      landscape: "W środku klatki piersiowej jest ciepło, które się rozprzestrzenia. Nie gorąco — ciepło. Jakby coś dojrzałego, pełnego. To ciepło ma ruch — nie chce zostać w środku. Chce się dzielić, przelewać na zewnątrz.",
-      breath: "Pełny, łatwy. Wydech dłuższy niż wdech. Można powiedzieć, że oddech się «uśmiecha».",
+      name: "Rado\u015B\u0107", short: "Rado\u015B\u0107", vector: "Na zewn\u0105trz, we wszystkie strony",
+      gradients: { low: "Pogoda ducha", mid: "Rado\u015B\u0107", high: "Ekstaza" },
+      body: "Poczuj pod\u0142og\u0119 pod stopami \u2014 a potem poczuj, \u017Ce co\u015B ci\u0119 od niej lekko odrywa. Nie unosisz si\u0119 \u2014 ale ci\u0119\u017Car staje si\u0119 mniejszy. Klatka piersiowa rozszerza si\u0119, jakby w \u015Brodku robi\u0142o si\u0119 wi\u0119cej miejsca. R\u0119ce oddalaj\u0105 si\u0119 od tu\u0142owia \u2014 nie dlatego, \u017Ce je unosisz, ale dlatego, \u017Ce cia\u0142o chce zajmowa\u0107 wi\u0119cej przestrzeni.",
+      attention: "Otw\u00F3rz oczy. Widzisz szeroko \u2014 nie szukasz niczego konkretnego, ale wszystko jest ciekawe. Wzrok jest mi\u0119kki, nieostry. K\u0105ty pokoju, kolor \u015Bcian, \u015Bwiat\u0142o \u2014 wszystko jest lekko ja\u015Bniejsze ni\u017C powinno.",
+      landscape: "W \u015Brodku klatki piersiowej jest ciep\u0142o, kt\u00F3re si\u0119 rozprzestrzenia. Nie gor\u0105co \u2014 ciep\u0142o. Jakby co\u015B dojrza\u0142ego, pe\u0142nego. To ciep\u0142o ma ruch \u2014 nie chce zosta\u0107 w \u015Brodku. Chce si\u0119 dzieli\u0107, przelewa\u0107 na zewn\u0105trz.",
+      breath: "Pe\u0142ny, \u0142atwy. Wydech d\u0142u\u017Cszy ni\u017C wdech. Mo\u017Cna powiedzie\u0107, \u017Ce oddech si\u0119 \u00ABu\u015Bmiecha\u00BB.",
       grad: {
-        low: "Lekki uśmiech wewnątrz. Ciało jest odprężone, ale nie aktywne. Nie szukasz niczego — jest dobrze tak, jak jest.",
-        mid: "Ciepło rozlewa się z klatki piersiowej. Ciało chce się rozszerzać, zajmować więcej przestrzeni. Wzrok jest miękki i szeroki.",
-        high: "Ciało nie może pomieścić tego, co w nim jest. Granice się rozpuszczają — nie wiesz, gdzie kończysz się ty, a zaczyna świat.",
+        low: "Lekki u\u015Bmiech wewn\u0105trz. Cia\u0142o jest odpr\u0119\u017Cone, ale nie aktywne. Nie szukasz niczego \u2014 jest dobrze tak, jak jest.",
+        mid: "Ciep\u0142o rozlewa si\u0119 z klatki piersiowej. Cia\u0142o chce si\u0119 rozszerza\u0107, zajmowa\u0107 wi\u0119cej przestrzeni. Wzrok jest mi\u0119kki i szeroki.",
+        high: "Cia\u0142o nie mo\u017Ce pomie\u015Bci\u0107 tego, co w nim jest. Granice si\u0119 rozpuszczaj\u0105 \u2014 nie wiesz, gdzie ko\u0144czysz si\u0119 ty, a zaczyna \u015Bwiat.",
       },
     },
-    en: {
-      name: "Joy", short: "Joy", vector: "Outward, in all directions",
-      gradients: { low: "Serenity", mid: "Joy", high: "Ecstasy" },
-      body: "Feel the floor beneath your feet — and then feel something gently lifting you from it. You're not floating — but the weight becomes less. Your chest expands, as if more space is opening inside. Your arms move away from your torso — not because you lift them, but because the body wants to take up more space.",
-      attention: "Open your eyes. You see wide — you're not looking for anything specific, but everything is interesting. Your gaze is soft, unfocused. The corners of the room, the color of walls, the light — everything is slightly brighter than it should be.",
-      landscape: "In the center of your chest there is warmth spreading. Not heat — warmth. As if something ripe, full. This warmth has movement — it doesn't want to stay inside. It wants to share, to overflow outward.",
-      breath: "Full, easy. Exhale longer than inhale. You could say the breath is 'smiling'.",
+    de: {
+      name: "Freude", short: "Freude", vector: "Nach au\u00DFen, in alle Richtungen",
+      gradients: { low: "Heiterkeit", mid: "Freude", high: "Ekstase" },
+      body: "Sp\u00FCre den Boden unter deinen F\u00FC\u00DFen \u2014 und dann sp\u00FCre, wie etwas dich sanft davon l\u00F6st. Du schwebst nicht \u2014 aber das Gewicht wird geringer. Der Brustkorb weitet sich, als w\u00FCrde innen mehr Platz entstehen. Die Arme entfernen sich vom Rumpf \u2014 nicht weil du sie hebst, sondern weil der K\u00F6rper mehr Raum einnehmen will.",
+      attention: "\u00D6ffne die Augen. Du siehst weit \u2014 du suchst nichts Bestimmtes, aber alles ist interessant. Der Blick ist weich, unscharf. Die Ecken des Raumes, die Farbe der W\u00E4nde, das Licht \u2014 alles ist ein wenig heller als es sein sollte.",
+      landscape: "In der Mitte des Brustkorbs ist W\u00E4rme, die sich ausbreitet. Keine Hitze \u2014 W\u00E4rme. Als ob etwas Reifes, Volles da w\u00E4re. Diese W\u00E4rme hat Bewegung \u2014 sie will nicht drinnen bleiben. Sie will sich teilen, nach au\u00DFen \u00FCberflie\u00DFen.",
+      breath: "Voll, leicht. Ausatmen l\u00E4nger als Einatmen. Man k\u00F6nnte sagen, der Atem \u00ABl\u00E4chelt\u00BB.",
       grad: {
-        low: "A slight smile inside. The body is relaxed but not active. You're not looking for anything — it's fine as it is.",
-        mid: "Warmth pours from the chest. The body wants to expand, take up more space. The gaze is soft and wide.",
-        high: "The body cannot contain what's inside it. Boundaries dissolve — you don't know where you end and the world begins.",
+        low: "Ein leichtes L\u00E4cheln im Inneren. Der K\u00F6rper ist entspannt, aber nicht aktiv. Du suchst nichts \u2014 es ist gut so, wie es ist.",
+        mid: "W\u00E4rme str\u00F6mt aus dem Brustkorb. Der K\u00F6rper will sich ausdehnen, mehr Raum einnehmen. Der Blick ist weich und weit.",
+        high: "Der K\u00F6rper kann nicht fassen, was in ihm ist. Grenzen l\u00F6sen sich auf \u2014 du wei\u00DFt nicht, wo du aufh\u00F6rst und die Welt beginnt.",
       },
     },
   },
   {
-    id: "TRUST", color: "#7aa648", icon: "◐",
+    id: "TRUST", color: "#7aa648", icon: "\u25D0",
     pl: {
       name: "Zaufanie", short: "Zaufanie", vector: "Do przodu, ku drugiemu",
       gradients: { low: "Akceptacja", mid: "Zaufanie", high: "Podziw" },
-      body: "Przód ciała mięknie. Brzuch, klatka piersiowa, gardło — te miejsca, które zwykle chronisz, odpuszczają osłonę. Poczuj, że jesteś lekko nachylony do przodu — nie dlatego, że się pochylasz, ale dlatego, że coś przed tobą jest warte zbliżenia się. Stopy są stabilne. Ziemia trzyma.",
-      attention: "Uwaga jest spokojna i skoncentrowana — ale nie czujna. Nie skanujesz zagrożeń. Patrzysz na to, co przed tobą, z taką jakością uwagi, z jaką patrzysz na kogoś, kto śpi i komu ufasz. Nie musisz śledzić — możesz po prostu być z.",
-      landscape: "Poczuj, że masz ciężar — ale to jest dobry ciężar. Ciężar kogoś, kto wie, gdzie stoi. Wewnątrz jest coś solidnego, cichego, stabilnego. Jakbyś miał w środku coś, co nie musi się bronić, bo wie, że jest bezpieczne.",
-      breath: "Wolny. Głęboki. Brzuszny. Oddech kogoś, kto nie musi się spieszyć.",
+      body: "Prz\u00F3d cia\u0142a mi\u0119knie. Brzuch, klatka piersiowa, gard\u0142o \u2014 te miejsca, kt\u00F3re zwykle chronisz, odpuszczaj\u0105 os\u0142on\u0119. Poczuj, \u017Ce jeste\u015B lekko nachylony do przodu \u2014 nie dlatego, \u017Ce si\u0119 pochylasz, ale dlatego, \u017Ce co\u015B przed tob\u0105 jest warte zbli\u017Cenia si\u0119. Stopy s\u0105 stabilne. Ziemia trzyma.",
+      attention: "Uwaga jest spokojna i skoncentrowana \u2014 ale nie czujna. Nie skanujesz zagro\u017Ce\u0144. Patrzysz na to, co przed tob\u0105, z tak\u0105 jako\u015Bci\u0105 uwagi, z jak\u0105 patrzysz na kogo\u015B, kto \u015Bpi i komu ufasz. Nie musisz \u015Bledzi\u0107 \u2014 mo\u017Cesz po prostu by\u0107 z.",
+      landscape: "Poczuj, \u017Ce masz ci\u0119\u017Car \u2014 ale to jest dobry ci\u0119\u017Car. Ci\u0119\u017Car kogo\u015B, kto wie, gdzie stoi. Wewn\u0105trz jest co\u015B solidnego, cichego, stabilnego. Jakby\u015B mia\u0142 w \u015Brodku co\u015B, co nie musi si\u0119 broni\u0107, bo wie, \u017Ce jest bezpieczne.",
+      breath: "Wolny. G\u0142\u0119boki. Brzuszny. Oddech kogo\u015B, kto nie musi si\u0119 spieszy\u0107.",
       grad: {
-        low: "Mogę to przyjąć. Ciało się relaksuje, ale nie angażuje. Nie ma oporu, ale nie ma też ruchu ku.",
-        mid: "Otwieram się ku temu. Przód ciała mięknie, jest ruch do przodu. Gardło jest otwarte, brzuch miękki.",
-        high: "To jest większe ode mnie i chcę się w tym zatracić. Ciało rozszerza się, wzrok mięknie, jest jakość oddania.",
+        low: "Mog\u0119 to przyj\u0105\u0107. Cia\u0142o si\u0119 relaksuje, ale nie anga\u017Cuje. Nie ma oporu, ale nie ma te\u017C ruchu ku.",
+        mid: "Otwieram si\u0119 ku temu. Prz\u00F3d cia\u0142a mi\u0119knie, jest ruch do przodu. Gard\u0142o jest otwarte, brzuch mi\u0119kki.",
+        high: "To jest wi\u0119ksze ode mnie i chc\u0119 si\u0119 w tym zatraci\u0107. Cia\u0142o rozszerza si\u0119, wzrok mi\u0119knie, jest jako\u015B\u0107 oddania.",
       },
     },
-    en: {
-      name: "Trust", short: "Trust", vector: "Forward, toward the other",
-      gradients: { low: "Acceptance", mid: "Trust", high: "Admiration" },
-      body: "The front of the body softens. Belly, chest, throat — the places you usually guard let go of their shields. Feel that you're slightly leaning forward — not because you bend, but because something ahead is worth approaching. Feet are stable. The ground holds.",
-      attention: "Attention is calm and focused — but not vigilant. You're not scanning for threats. You look at what's before you with the quality of attention you'd give to someone sleeping whom you trust. You don't need to track — you can simply be with.",
-      landscape: "Feel that you have weight — but it's good weight. The weight of someone who knows where they stand. Inside is something solid, quiet, stable. As if you have something inside that doesn't need to defend itself, because it knows it's safe.",
-      breath: "Slow. Deep. Abdominal. The breath of someone who doesn't need to hurry.",
+    de: {
+      name: "Vertrauen", short: "Vertrauen", vector: "Nach vorne, zum anderen hin",
+      gradients: { low: "Akzeptanz", mid: "Vertrauen", high: "Bewunderung" },
+      body: "Die Vorderseite des K\u00F6rpers wird weich. Bauch, Brustkorb, Kehle \u2014 die Stellen, die du normalerweise sch\u00FCtzt, lassen ihren Schutz los. Sp\u00FCre, dass du leicht nach vorne geneigt bist \u2014 nicht weil du dich beugst, sondern weil etwas vor dir es wert ist, sich zu n\u00E4hern. Die F\u00FC\u00DFe sind stabil. Der Boden h\u00E4lt.",
+      attention: "Die Aufmerksamkeit ist ruhig und konzentriert \u2014 aber nicht wachsam. Du scannst nicht nach Bedrohungen. Du schaust auf das, was vor dir ist, mit der Qualit\u00E4t der Aufmerksamkeit, mit der du jemanden anschaust, der schl\u00E4ft und dem du vertraust. Du musst nicht verfolgen \u2014 du kannst einfach dabei sein.",
+      landscape: "Sp\u00FCre, dass du Gewicht hast \u2014 aber es ist gutes Gewicht. Das Gewicht von jemandem, der wei\u00DF, wo er steht. Innen ist etwas Solides, Stilles, Stabiles. Als h\u00E4ttest du etwas in dir, das sich nicht verteidigen muss, weil es wei\u00DF, dass es sicher ist.",
+      breath: "Langsam. Tief. In den Bauch. Der Atem von jemandem, der es nicht eilig hat.",
       grad: {
-        low: "I can accept this. The body relaxes but doesn't engage. No resistance, but no movement toward either.",
-        mid: "I'm opening toward it. The front of the body softens, there's movement forward. Throat open, belly soft.",
-        high: "This is bigger than me and I want to lose myself in it. The body expands, the gaze softens, there's a quality of surrender.",
+        low: "Ich kann das annehmen. Der K\u00F6rper entspannt sich, engagiert sich aber nicht. Kein Widerstand, aber auch keine Bewegung hin zu.",
+        mid: "Ich \u00F6ffne mich dem. Die Vorderseite des K\u00F6rpers wird weich, es gibt Bewegung nach vorne. Die Kehle ist offen, der Bauch weich.",
+        high: "Das ist gr\u00F6\u00DFer als ich, und ich will mich darin verlieren. Der K\u00F6rper weitet sich, der Blick wird weich, es gibt eine Qualit\u00E4t der Hingabe.",
       },
     },
   },
   {
-    id: "FEAR", color: "#35b882", icon: "◇",
+    id: "FEAR", color: "#35b882", icon: "\u25C7",
     pl: {
-      name: "Strach", short: "Strach", vector: "Do tyłu, od źródła",
+      name: "Strach", short: "Strach", vector: "Do ty\u0142u, od \u017Ar\u00F3d\u0142a",
       gradients: { low: "Obawa", mid: "Strach", high: "Panika" },
-      body: "Ciężar przenosi się do góry — z brzucha do klatki, z klatki do ramion, z ramion do głowy. Stopy tracą kontakt z podłogą — nie fizycznie, ale jakościowo. Jakbyś mógł potrzebować uciec i ciało się już szykuje. Wszystko się lekko zacieśnia, kurczy. Nie zamykasz się — zbierasz się. Ciało chce być mniejsze, szybsze, gotowe.",
-      attention: "Widzenie peryferyjne nagle staje się bardzo aktywne. Szukasz. Nie wiesz czego — ale coś jest na granicy pola widzenia i jeszcze się nie ujawniło. Wzrok jest ostry, skacze. Uszy słyszą więcej niż zwykle.",
-      landscape: "Jest coś, co nadchodzi, ale nie wiesz co. Jeszcze nie. Gdzieś w żołądku lub w klatce pojawia się chłód, napięcie, elektryczność. Nie ból — napięcie czegoś, co czeka na informację, której jeszcze nie ma.",
-      breath: "Płytki, wysoko w klatce. Albo wstrzymany — jakbyś nasłuchiwał i oddech by ci przeszkadzał.",
+      body: "Ci\u0119\u017Car przenosi si\u0119 do g\u00F3ry \u2014 z brzucha do klatki, z klatki do ramion, z ramion do g\u0142owy. Stopy trac\u0105 kontakt z pod\u0142og\u0105 \u2014 nie fizycznie, ale jako\u015Bciowo. Jakby\u015B m\u00F3g\u0142 potrzebowa\u0107 uciec i cia\u0142o si\u0119 ju\u017C szykuje. Wszystko si\u0119 lekko zacie\u015Bnia, kurczy. Nie zamykasz si\u0119 \u2014 zbierasz si\u0119. Cia\u0142o chce by\u0107 mniejsze, szybsze, gotowe.",
+      attention: "Widzenie peryferyjne nagle staje si\u0119 bardzo aktywne. Szukasz. Nie wiesz czego \u2014 ale co\u015B jest na granicy pola widzenia i jeszcze si\u0119 nie ujawni\u0142o. Wzrok jest ostry, skacze. Uszy s\u0142ysz\u0105 wi\u0119cej ni\u017C zwykle.",
+      landscape: "Jest co\u015B, co nadchodzi, ale nie wiesz co. Jeszcze nie. Gdzie\u015B w \u017Co\u0142\u0105dku lub w klatce pojawia si\u0119 ch\u0142\u00F3d, napi\u0119cie, elektryczno\u015B\u0107. Nie b\u00F3l \u2014 napi\u0119cie czego\u015B, co czeka na informacj\u0119, kt\u00F3rej jeszcze nie ma.",
+      breath: "P\u0142ytki, wysoko w klatce. Albo wstrzymany \u2014 jakby\u015B nas\u0142uchiwa\u0142 i oddech by ci przeszkadza\u0142.",
       grad: {
-        low: "Coś jest lekko nie tak. Nie wiesz co. Ciało jest czujne, ale jeszcze spokojne.",
-        mid: "Teraz wiesz, że coś jest. Ciało już wie, że musi być gotowe. Ciężar podnosi się z brzucha do klatki.",
-        high: "Ciało wie i nie może się z tym zmierzyć. Za dużo. Orientacja pęka.",
+        low: "Co\u015B jest lekko nie tak. Nie wiesz co. Cia\u0142o jest czujne, ale jeszcze spokojne.",
+        mid: "Teraz wiesz, \u017Ce co\u015B jest. Cia\u0142o ju\u017C wie, \u017Ce musi by\u0107 gotowe. Ci\u0119\u017Car podnosi si\u0119 z brzucha do klatki.",
+        high: "Cia\u0142o wie i nie mo\u017Ce si\u0119 z tym zmierzy\u0107. Za du\u017Co. Orientacja p\u0119ka.",
       },
     },
-    en: {
-      name: "Fear", short: "Fear", vector: "Backward, away from the source",
-      gradients: { low: "Apprehension", mid: "Fear", high: "Terror" },
-      body: "Weight shifts upward — from belly to chest, from chest to shoulders, from shoulders to head. Feet lose contact with the floor — not physically, but qualitatively. As if you might need to run and the body is already preparing. Everything tightens slightly, contracts. You're not closing — you're gathering. The body wants to be smaller, faster, ready.",
-      attention: "Peripheral vision suddenly becomes very active. You're searching. You don't know for what — but something is at the edge of your field of vision and hasn't revealed itself yet. The gaze is sharp, jumping. Ears hear more than usual.",
-      landscape: "Something is coming, but you don't know what. Not yet. Somewhere in your stomach or chest, there's cold, tension, electricity. Not pain — the tension of something waiting for information that doesn't exist yet.",
-      breath: "Shallow, high in the chest. Or held — as if you were listening and breathing would interfere.",
+    de: {
+      name: "Angst", short: "Angst", vector: "Nach hinten, weg von der Quelle",
+      gradients: { low: "Besorgnis", mid: "Angst", high: "Panik" },
+      body: "Das Gewicht verlagert sich nach oben \u2014 vom Bauch zur Brust, von der Brust zu den Schultern, von den Schultern zum Kopf. Die F\u00FC\u00DFe verlieren den Kontakt zum Boden \u2014 nicht physisch, aber qualitativ. Als k\u00F6nntest du fliehen m\u00FCssen und der K\u00F6rper bereitet sich bereits vor. Alles zieht sich leicht zusammen, schrumpft. Du verschlie\u00DFt dich nicht \u2014 du sammelst dich. Der K\u00F6rper will kleiner sein, schneller, bereit.",
+      attention: "Das periphere Sehen wird pl\u00F6tzlich sehr aktiv. Du suchst. Du wei\u00DFt nicht wonach \u2014 aber etwas ist am Rand deines Blickfelds und hat sich noch nicht offenbart. Der Blick ist scharf, springend. Die Ohren h\u00F6ren mehr als sonst.",
+      landscape: "Etwas kommt, aber du wei\u00DFt nicht was. Noch nicht. Irgendwo im Magen oder in der Brust entsteht K\u00E4lte, Spannung, Elektrizit\u00E4t. Kein Schmerz \u2014 die Spannung von etwas, das auf eine Information wartet, die es noch nicht gibt.",
+      breath: "Flach, hoch in der Brust. Oder angehalten \u2014 als w\u00FCrdest du lauschen und das Atmen w\u00FCrde st\u00F6ren.",
       grad: {
-        low: "Something is slightly off. You don't know what. The body is alert but still calm.",
-        mid: "Now you know something is there. The body already knows it needs to be ready. Weight rises from belly to chest.",
-        high: "The body knows and cannot face it. Too much. Orientation shatters.",
+        low: "Etwas stimmt leicht nicht. Du wei\u00DFt nicht was. Der K\u00F6rper ist wachsam, aber noch ruhig.",
+        mid: "Jetzt wei\u00DFt du, dass etwas da ist. Der K\u00F6rper wei\u00DF schon, dass er bereit sein muss. Das Gewicht steigt vom Bauch zur Brust.",
+        high: "Der K\u00F6rper wei\u00DF und kann sich dem nicht stellen. Zu viel. Die Orientierung zerbricht.",
       },
     },
   },
   {
-    id: "SURPRISE", color: "#42aed4", icon: "✦",
+    id: "SURPRISE", color: "#42aed4", icon: "\u2726",
     pl: {
       name: "Zaskoczenie", short: "Zaskocz.", vector: "Zatrzymanie, otwarte we wszystkie strony",
       gradients: { low: "Rozproszenie", mid: "Zaskoczenie", high: "Zdumienie" },
-      body: "Nagłe zatrzymanie. Coś, co robiłeś — jakikolwiek ruch, jakikolwiek plan — nagle zostaje przerwane. Ciało się otwiera gwałtownie: oczy szerzej, klatka szerzej, ręce lekko od tułowia. Jakbyś nagle musiał pomieścić więcej niż przed chwilą. Poczuj ten moment powiększenia.",
-      attention: "Rama, przez którą patrzyłeś na świat, właśnie pękła. Wszystko jest nowe. Uwaga jest całkowicie otwarta, pusta, receptywna — nie szuka jeszcze, bo nie wie, czego szukać. To jest czysty odbiór, przed interpretacją. Dziecko widzi tak, kiedy widzi coś pierwszy raz.",
-      landscape: "W środku jest chwilowa pustka — ale nie straszna. Jasna pustka. Jak flash aparatu — wszystko bieleje na sekundę, a potem świat wraca, ale inny. Między starą ramą a nową jest moment, w którym nie masz żadnej ramy. Zostań w tym momencie.",
-      breath: "Gwałtowny, krótki wdech. A potem pauza. Ciało czeka, co będzie dalej.",
+      body: "Nag\u0142e zatrzymanie. Co\u015B, co robi\u0142e\u015B \u2014 jakikolwiek ruch, jakikolwiek plan \u2014 nagle zostaje przerwane. Cia\u0142o si\u0119 otwiera gwa\u0142townie: oczy szerzej, klatka szerzej, r\u0119ce lekko od tu\u0142owia. Jakby\u015B nagle musia\u0142 pomie\u015Bci\u0107 wi\u0119cej ni\u017C przed chwil\u0105. Poczuj ten moment powi\u0119kszenia.",
+      attention: "Rama, przez kt\u00F3r\u0105 patrzy\u0142e\u015B na \u015Bwiat, w\u0142a\u015Bnie p\u0119k\u0142a. Wszystko jest nowe. Uwaga jest ca\u0142kowicie otwarta, pusta, receptywna \u2014 nie szuka jeszcze, bo nie wie, czego szuka\u0107. To jest czysty odbi\u00F3r, przed interpretacj\u0105. Dziecko widzi tak, kiedy widzi co\u015B pierwszy raz.",
+      landscape: "W \u015Brodku jest chwilowa pustka \u2014 ale nie straszna. Jasna pustka. Jak flash aparatu \u2014 wszystko bieleje na sekund\u0119, a potem \u015Bwiat wraca, ale inny. Mi\u0119dzy star\u0105 ram\u0105 a now\u0105 jest moment, w kt\u00F3rym nie masz \u017Cadnej ramy. Zosta\u0144 w tym momencie.",
+      breath: "Gwa\u0142towny, kr\u00F3tki wdech. A potem pauza. Cia\u0142o czeka, co b\u0119dzie dalej.",
       grad: {
-        low: "Coś odciąga uwagę. Nie dramatycznie — jak dźwięk z drugiego pokoju.",
-        mid: "Rama pęka. To, co wiedziałeś, nagle nie pasuje. Ciało się otwiera gwałtownie.",
-        high: "Nie możesz się ruszyć. Nie z powodu strachu — z powodu ogromu tego, co widzisz.",
+        low: "Co\u015B odci\u0105ga uwag\u0119. Nie dramatycznie \u2014 jak d\u017Awi\u0119k z drugiego pokoju.",
+        mid: "Rama p\u0119ka. To, co wiedzia\u0142e\u015B, nagle nie pasuje. Cia\u0142o si\u0119 otwiera gwa\u0142townie.",
+        high: "Nie mo\u017Cesz si\u0119 ruszy\u0107. Nie z powodu strachu \u2014 z powodu ogromu tego, co widzisz.",
       },
     },
-    en: {
-      name: "Surprise", short: "Surprise", vector: "Freeze, open in all directions",
-      gradients: { low: "Distraction", mid: "Surprise", high: "Amazement" },
-      body: "A sudden stop. Whatever you were doing — any movement, any plan — is abruptly interrupted. The body opens violently: eyes wider, chest wider, hands slightly away from the torso. As if you suddenly need to contain more than a moment ago. Feel this moment of expansion.",
-      attention: "The frame through which you viewed the world has just cracked. Everything is new. Attention is completely open, empty, receptive — it's not searching yet, because it doesn't know what to search for. This is pure reception, before interpretation. A child sees this way when seeing something for the first time.",
-      landscape: "Inside there is a momentary emptiness — but not frightening. Bright emptiness. Like a camera flash — everything goes white for a second, then the world returns, but different. Between the old frame and the new one there's a moment when you have no frame at all. Stay in that moment.",
-      breath: "A sudden, short inhale. Then a pause. The body waits for what comes next.",
+    de: {
+      name: "\u00DCberraschung", short: "\u00DCberr.", vector: "Einfrieren, offen in alle Richtungen",
+      gradients: { low: "Ablenkung", mid: "\u00DCberraschung", high: "Staunen" },
+      body: "Ein pl\u00F6tzliches Anhalten. Was auch immer du getan hast \u2014 jede Bewegung, jeder Plan \u2014 wird abrupt unterbrochen. Der K\u00F6rper \u00F6ffnet sich heftig: Augen weiter, Brustkorb weiter, H\u00E4nde leicht vom Rumpf weg. Als m\u00FCsstest du pl\u00F6tzlich mehr fassen als noch einen Moment zuvor. Sp\u00FCre diesen Moment der Ausdehnung.",
+      attention: "Der Rahmen, durch den du die Welt betrachtet hast, ist gerade gebrochen. Alles ist neu. Die Aufmerksamkeit ist v\u00F6llig offen, leer, empf\u00E4nglich \u2014 sie sucht noch nicht, weil sie nicht wei\u00DF, wonach. Das ist reines Empfangen, vor der Interpretation. Ein Kind sieht so, wenn es etwas zum ersten Mal sieht.",
+      landscape: "Innen ist eine momentane Leere \u2014 aber keine be\u00E4ngstigende. Helle Leere. Wie ein Kamerablitz \u2014 alles wird f\u00FCr eine Sekunde wei\u00DF, dann kehrt die Welt zur\u00FCck, aber anders. Zwischen dem alten Rahmen und dem neuen gibt es einen Moment, in dem du keinen Rahmen hast. Bleib in diesem Moment.",
+      breath: "Ein pl\u00F6tzliches, kurzes Einatmen. Dann eine Pause. Der K\u00F6rper wartet auf das, was als N\u00E4chstes kommt.",
       grad: {
-        low: "Something pulls your attention. Not dramatically — like a sound from another room.",
-        mid: "The frame cracks. What you knew suddenly doesn't fit. The body opens violently.",
-        high: "You can't move. Not from fear — from the enormity of what you see.",
+        low: "Etwas zieht die Aufmerksamkeit ab. Nicht dramatisch \u2014 wie ein Ger\u00E4usch aus dem Nebenzimmer.",
+        mid: "Der Rahmen bricht. Was du wusstest, passt pl\u00F6tzlich nicht mehr. Der K\u00F6rper \u00F6ffnet sich heftig.",
+        high: "Du kannst dich nicht bewegen. Nicht aus Angst \u2014 wegen der Gr\u00F6\u00DFe dessen, was du siehst.",
       },
     },
   },
   {
-    id: "SADNESS", color: "#5b82d4", icon: "◠",
+    id: "SADNESS", color: "#5b82d4", icon: "\u25E0",
     pl: {
-      name: "Smutek", short: "Smutek", vector: "Do wewnątrz, w dół",
-      gradients: { low: "Zamyślenie", mid: "Smutek", high: "Żałoba" },
-      body: "Ciężar wraca. Ale nie taki jak w zaufaniu — tamten był stabilny. Ten ciągnie w dół. Ramiona opadają, głowa ciężeje, klatka się zamyka — nie jako obrona, lecz jako wycofanie. Ciało traci zainteresowanie przestrzenią. Nie chcesz zajmować miejsca. Nie dlatego, że się boisz — dlatego, że nie ma po co.",
-      attention: "Pole widzenia się zwęża. Obrzeża pokoju tracą znaczenie, rozmywają się. Wzrok opada — ku dołowi, ku podłodze, ku dłoniom. Albo wzrok staje się wewnętrzny — patrzysz, ale nie widzisz tego, co jest przed tobą. Widzisz coś, czego tu nie ma.",
-      landscape: "Coś odeszło. Albo odchodzi. W środku klatki piersiowej jest ciężar, który nie jest fizyczny — jest to ciężar nieobecności. Jakby coś, co było pełne, stało się puste, i ta pustka ma wagę. Wszystko lekko zwalnia. Czas staje się gęsty.",
-      breath: "Wolny, ale płytki. Wdechy są niechętne, jakby ciało nie chciało napełniać się powietrzem. Wydechy długie, westchnienia.",
+      name: "Smutek", short: "Smutek", vector: "Do wewn\u0105trz, w d\u00F3\u0142",
+      gradients: { low: "Zamy\u015Blenie", mid: "Smutek", high: "\u017Ba\u0142oba" },
+      body: "Ci\u0119\u017Car wraca. Ale nie taki jak w zaufaniu \u2014 tamten by\u0142 stabilny. Ten ci\u0105gnie w d\u00F3\u0142. Ramiona opadaj\u0105, g\u0142owa ci\u0119\u017Ceje, klatka si\u0119 zamyka \u2014 nie jako obrona, lecz jako wycofanie. Cia\u0142o traci zainteresowanie przestrzeni\u0105. Nie chcesz zajmowa\u0107 miejsca. Nie dlatego, \u017Ce si\u0119 boisz \u2014 dlatego, \u017Ce nie ma po co.",
+      attention: "Pole widzenia si\u0119 zw\u0119\u017Ca. Obrze\u017Ca pokoju trac\u0105 znaczenie, rozmywaj\u0105 si\u0119. Wzrok opada \u2014 ku do\u0142owi, ku pod\u0142odze, ku d\u0142oniom. Albo wzrok staje si\u0119 wewn\u0119trzny \u2014 patrzysz, ale nie widzisz tego, co jest przed tob\u0105. Widzisz co\u015B, czego tu nie ma.",
+      landscape: "Co\u015B odesz\u0142o. Albo odchodzi. W \u015Brodku klatki piersiowej jest ci\u0119\u017Car, kt\u00F3ry nie jest fizyczny \u2014 jest to ci\u0119\u017Car nieobecno\u015Bci. Jakby co\u015B, co by\u0142o pe\u0142ne, sta\u0142o si\u0119 puste, i ta pustka ma wag\u0119. Wszystko lekko zwalnia. Czas staje si\u0119 g\u0119sty.",
+      breath: "Wolny, ale p\u0142ytki. Wdechy s\u0105 niech\u0119tne, jakby cia\u0142o nie chcia\u0142o nape\u0142nia\u0107 si\u0119 powietrzem. Wydechy d\u0142ugie, westchnienia.",
       grad: {
-        low: "Lekka melancholia. Świat nie jest zły — jest trochę szary, trochę odległy.",
-        mid: "Ciężar. Coś odeszło lub odchodzi. Klatka piersiowa zamyka się, ramiona opadają.",
-        high: "Ciężar jest tak duży, że ciało chce się złożyć. Kolana miękną. Świat stracił sens.",
+        low: "Lekka melancholia. \u015Awiat nie jest z\u0142y \u2014 jest troch\u0119 szary, troch\u0119 odleg\u0142y.",
+        mid: "Ci\u0119\u017Car. Co\u015B odesz\u0142o lub odchodzi. Klatka piersiowa zamyka si\u0119, ramiona opadaj\u0105.",
+        high: "Ci\u0119\u017Car jest tak du\u017Cy, \u017Ce cia\u0142o chce si\u0119 z\u0142o\u017Cy\u0107. Kolana mi\u0119kn\u0105. \u015Awiat straci\u0142 sens.",
       },
     },
-    en: {
-      name: "Sadness", short: "Sadness", vector: "Inward, downward",
-      gradients: { low: "Pensiveness", mid: "Sadness", high: "Grief" },
-      body: "Weight returns. But not like in trust — that was stable. This pulls downward. Shoulders drop, the head grows heavy, the chest closes — not as defense, but as withdrawal. The body loses interest in space. You don't want to take up room. Not because you're afraid — because there's no reason to.",
-      attention: "The field of vision narrows. The edges of the room lose meaning, blur. The gaze drops — downward, to the floor, to the hands. Or the gaze turns inward — you're looking, but you don't see what's in front of you. You see something that isn't here.",
-      landscape: "Something has left. Or is leaving. In the center of the chest there's a weight that isn't physical — it's the weight of absence. As if something that was full became empty, and that emptiness has weight. Everything slows slightly. Time becomes thick.",
-      breath: "Slow, but shallow. Inhales are reluctant, as if the body doesn't want to fill itself with air. Exhales long, sighs.",
+    de: {
+      name: "Trauer", short: "Trauer", vector: "Nach innen, nach unten",
+      gradients: { low: "Nachdenklichkeit", mid: "Trauer", high: "Trauer (tief)" },
+      body: "Das Gewicht kehrt zur\u00FCck. Aber nicht wie beim Vertrauen \u2014 jenes war stabil. Dieses zieht nach unten. Die Schultern sinken, der Kopf wird schwer, der Brustkorb schlie\u00DFt sich \u2014 nicht als Verteidigung, sondern als R\u00FCckzug. Der K\u00F6rper verliert das Interesse am Raum. Du willst keinen Platz einnehmen. Nicht weil du Angst hast \u2014 weil es keinen Grund gibt.",
+      attention: "Das Sichtfeld verengt sich. Die R\u00E4nder des Raumes verlieren ihre Bedeutung, verschwimmen. Der Blick sinkt \u2014 nach unten, zum Boden, zu den H\u00E4nden. Oder der Blick wird nach innen gerichtet \u2014 du schaust, aber du siehst nicht, was vor dir ist. Du siehst etwas, das nicht hier ist.",
+      landscape: "Etwas ist gegangen. Oder geht. In der Mitte des Brustkorbs ist ein Gewicht, das nicht physisch ist \u2014 es ist das Gewicht der Abwesenheit. Als w\u00E4re etwas, das voll war, leer geworden, und diese Leere hat Gewicht. Alles verlangsamt sich leicht. Die Zeit wird z\u00E4h.",
+      breath: "Langsam, aber flach. Das Einatmen ist widerwillig, als wolle der K\u00F6rper sich nicht mit Luft f\u00FCllen. Langes Ausatmen, Seufzer.",
       grad: {
-        low: "Light melancholy. The world isn't bad — it's a bit grey, a bit distant.",
-        mid: "Weight. Something has left or is leaving. The chest closes, shoulders drop.",
-        high: "The weight is so great that the body wants to fold. Knees soften. The world has lost its meaning.",
+        low: "Leichte Melancholie. Die Welt ist nicht schlecht \u2014 sie ist etwas grau, etwas fern.",
+        mid: "Gewicht. Etwas ist gegangen oder geht. Der Brustkorb schlie\u00DFt sich, die Schultern sinken.",
+        high: "Das Gewicht ist so gro\u00DF, dass der K\u00F6rper sich zusammenfalten will. Die Knie werden weich. Die Welt hat ihren Sinn verloren.",
       },
     },
   },
   {
-    id: "DISGUST", color: "#a05cb8", icon: "⊘",
+    id: "DISGUST", color: "#a05cb8", icon: "\u2298",
     pl: {
-      name: "Wstręt", short: "Wstręt", vector: "Od źródła, wypychanie",
-      gradients: { low: "Znudzenie", mid: "Wstręt", high: "Obrzydzenie" },
-      body: "Ciało odwraca się od. Nie do tyłu — od. Nos, górna warga, twarz odwracają się pierwsze. Potem ramiona. Potem tułów. To jest gest granicy: coś przekroczyło próg tego, co mogę przyjąć, i ciało to wypycha. Poczuj, że twoja skóra staje się barierą — nie chce przepuścić.",
-      attention: "Paradoksalnie ostra — widzisz bardzo dokładnie to, od czego się odwracasz. Wzrok jest skupiony na źródle, ale z jakością «za dużo, za blisko». A potem odwraca się. Nie chcesz tego widzieć, ale nie możesz nie widzieć.",
-      landscape: "Coś jest nie tak. Nie niebezpieczne jak w strachu — złe. Skażone. Wewnątrz jest ruch wypychania — z żołądka, z gardła. Jakby ciało chciało wyrzucić coś, co się do niego dostało. Granica między mną a nie-mną staje się bardzo ostra, twarda.",
-      breath: "Wydech dominuje. Silny, przez nos. Ciało chce pozbyć się powietrza, które było blisko tego źródła. Wdech jest niechętny — nie chcę wpuszczać.",
+      name: "Wstr\u0119t", short: "Wstr\u0119t", vector: "Od \u017Ar\u00F3d\u0142a, wypychanie",
+      gradients: { low: "Znudzenie", mid: "Wstr\u0119t", high: "Obrzydzenie" },
+      body: "Cia\u0142o odwraca si\u0119 od. Nie do ty\u0142u \u2014 od. Nos, g\u00F3rna warga, twarz odwracaj\u0105 si\u0119 pierwsze. Potem ramiona. Potem tu\u0142\u00F3w. To jest gest granicy: co\u015B przekroczy\u0142o pr\u00F3g tego, co mog\u0119 przyj\u0105\u0107, i cia\u0142o to wypycha. Poczuj, \u017Ce twoja sk\u00F3ra staje si\u0119 barier\u0105 \u2014 nie chce przepu\u015Bci\u0107.",
+      attention: "Paradoksalnie ostra \u2014 widzisz bardzo dok\u0142adnie to, od czego si\u0119 odwracasz. Wzrok jest skupiony na \u017Ar\u00F3dle, ale z jako\u015Bci\u0105 \u00ABza du\u017Co, za blisko\u00BB. A potem odwraca si\u0119. Nie chcesz tego widzie\u0107, ale nie mo\u017Cesz nie widzie\u0107.",
+      landscape: "Co\u015B jest nie tak. Nie niebezpieczne jak w strachu \u2014 z\u0142e. Ska\u017Cone. Wewn\u0105trz jest ruch wypychania \u2014 z \u017Co\u0142\u0105dka, z gard\u0142a. Jakby cia\u0142o chcia\u0142o wyrzuci\u0107 co\u015B, co si\u0119 do niego dosta\u0142o. Granica mi\u0119dzy mn\u0105 a nie-mn\u0105 staje si\u0119 bardzo ostra, twarda.",
+      breath: "Wydech dominuje. Silny, przez nos. Cia\u0142o chce pozby\u0107 si\u0119 powietrza, kt\u00F3re by\u0142o blisko tego \u017Ar\u00F3d\u0142a. Wdech jest niech\u0119tny \u2014 nie chc\u0119 wpuszcza\u0107.",
       grad: {
-        low: "To mnie nie obchodzi. Ciało się odwraca — nie gwałtownie, raczej z obojętnością.",
-        mid: "Coś przekroczyło granicę. Nos i górna warga odwracają się pierwsze. Ciało buduje barierę.",
-        high: "Ciało chce wyrzucić. Granica między mną a tym jest brutalna, ostateczna.",
+        low: "To mnie nie obchodzi. Cia\u0142o si\u0119 odwraca \u2014 nie gwa\u0142townie, raczej z oboj\u0119tno\u015Bci\u0105.",
+        mid: "Co\u015B przekroczy\u0142o granic\u0119. Nos i g\u00F3rna warga odwracaj\u0105 si\u0119 pierwsze. Cia\u0142o buduje barier\u0119.",
+        high: "Cia\u0142o chce wyrzuci\u0107. Granica mi\u0119dzy mn\u0105 a tym jest brutalna, ostateczna.",
       },
     },
-    en: {
-      name: "Disgust", short: "Disgust", vector: "Away from the source, pushing out",
-      gradients: { low: "Boredom", mid: "Disgust", high: "Loathing" },
-      body: "The body turns away from. Not backward — from. Nose, upper lip, face turn first. Then shoulders. Then torso. This is the gesture of a boundary: something crossed the threshold of what I can accept, and the body pushes it out. Feel your skin becoming a barrier — it doesn't want to let through.",
-      attention: "Paradoxically sharp — you see very precisely what you're turning away from. The gaze is focused on the source, but with the quality of 'too much, too close.' Then it turns away. You don't want to see it, but you can't not see it.",
-      landscape: "Something is wrong. Not dangerous like in fear — bad. Contaminated. Inside there's a pushing motion — from the stomach, from the throat. As if the body wants to expel something that got in. The boundary between me and not-me becomes very sharp, hard.",
-      breath: "Exhale dominates. Strong, through the nose. The body wants to get rid of the air that was near that source. Inhale is reluctant — I don't want to let in.",
+    de: {
+      name: "Ekel", short: "Ekel", vector: "Weg von der Quelle, hinausdr\u00E4ngen",
+      gradients: { low: "Langeweile", mid: "Ekel", high: "Abscheu" },
+      body: "Der K\u00F6rper wendet sich ab. Nicht nach hinten \u2014 weg von. Nase, Oberlippe, Gesicht wenden sich zuerst ab. Dann die Schultern. Dann der Rumpf. Das ist die Geste einer Grenze: etwas hat die Schwelle dessen \u00FCberschritten, was ich annehmen kann, und der K\u00F6rper st\u00F6\u00DFt es hinaus. Sp\u00FCre, wie deine Haut zur Barriere wird \u2014 sie will nichts durchlassen.",
+      attention: "Paradoxerweise scharf \u2014 du siehst sehr genau das, wovon du dich abwendest. Der Blick ist auf die Quelle gerichtet, aber mit der Qualit\u00E4t von \u00ABzu viel, zu nah\u00BB. Dann wendet er sich ab. Du willst es nicht sehen, aber du kannst nicht nicht sehen.",
+      landscape: "Etwas stimmt nicht. Nicht gef\u00E4hrlich wie bei Angst \u2014 schlecht. Verunreinigt. Innen ist eine Sto\u00DFbewegung \u2014 aus dem Magen, aus der Kehle. Als wolle der K\u00F6rper etwas aussto\u00DFen, das eingedrungen ist. Die Grenze zwischen mir und Nicht-mir wird sehr scharf, hart.",
+      breath: "Das Ausatmen dominiert. Stark, durch die Nase. Der K\u00F6rper will die Luft loswerden, die in der N\u00E4he dieser Quelle war. Das Einatmen ist widerwillig \u2014 ich will nichts hereinlassen.",
       grad: {
-        low: "I don't care about this. The body turns away — not violently, rather with indifference.",
-        mid: "Something crossed a boundary. Nose and upper lip turn first. The body builds a barrier.",
-        high: "The body wants to expel. The boundary between me and this is brutal, final.",
+        low: "Das interessiert mich nicht. Der K\u00F6rper wendet sich ab \u2014 nicht heftig, eher mit Gleichg\u00FCltigkeit.",
+        mid: "Etwas hat eine Grenze \u00FCberschritten. Nase und Oberlippe wenden sich zuerst. Der K\u00F6rper baut eine Barriere.",
+        high: "Der K\u00F6rper will aussto\u00DFen. Die Grenze zwischen mir und dem ist brutal, endg\u00FCltig.",
       },
     },
   },
   {
-    id: "ANGER", color: "#e05450", icon: "▲",
+    id: "ANGER", color: "#e05450", icon: "\u25B2",
     pl: {
       name: "Gniew", short: "Gniew", vector: "Do przodu, ku celowi",
-      gradients: { low: "Irytacja", mid: "Gniew", high: "Wściekłość" },
-      body: "Energia idzie do przodu. Klatka piersiowa pręży się, szczęka się zaciska, ręce mają energię — nie do uderzenia (to jest za daleko), ale do trzymania, chwytania, ustalania. Ciało zajmuje więcej przestrzeni, ale inaczej niż w radości — radość rozszerza się we wszystkie strony, gniew rozszerza się ku. Jest cel. Może jeszcze nie wiesz jaki — ale ciało już wie, w którym kierunku.",
-      attention: "Bardzo wąska, bardzo ostra. Laserowa. Wszystko poza obiektem gniewu traci ostrość, staje się nieistotne. Widzisz jedno — i widzisz to z przenikliwością, z którą normalnie nie patrzysz. Gniew jest jak reflektor: oświetla z brutalną jasnością to, na co jest skierowany, i pogrąża w ciemności resztę.",
-      landscape: "Ciepło, ale inne niż w radości. Gorąco. Ciśnienie. Coś w środku rośnie i szuka ujścia. Granica została naruszona — i ciało to wie, zanim umysł zrozumie dlaczego. Jest poczucie «nie» — głębokie, cielesne, niepodważalne. Nie «nie chcę» — «NIE».",
-      breath: "Mocny, przez nos, z widocznym wysiłkiem. Jakby powietrze nie chciało się wpuścić wystarczająco szybko. Nozdrzowe.",
+      gradients: { low: "Irytacja", mid: "Gniew", high: "W\u015Bciek\u0142o\u015B\u0107" },
+      body: "Energia idzie do przodu. Klatka piersiowa pr\u0119\u017Cy si\u0119, szcz\u0119ka si\u0119 zaciska, r\u0119ce maj\u0105 energi\u0119 \u2014 nie do uderzenia (to jest za daleko), ale do trzymania, chwytania, ustalania. Cia\u0142o zajmuje wi\u0119cej przestrzeni, ale inaczej ni\u017C w rado\u015Bci \u2014 rado\u015B\u0107 rozszerza si\u0119 we wszystkie strony, gniew rozszerza si\u0119 ku. Jest cel. Mo\u017Ce jeszcze nie wiesz jaki \u2014 ale cia\u0142o ju\u017C wie, w kt\u00F3rym kierunku.",
+      attention: "Bardzo w\u0105ska, bardzo ostra. Laserowa. Wszystko poza obiektem gniewu traci ostro\u015B\u0107, staje si\u0119 nieistotne. Widzisz jedno \u2014 i widzisz to z przenikliwo\u015Bci\u0105, z kt\u00F3r\u0105 normalnie nie patrzysz. Gniew jest jak reflektor: o\u015Bwietla z brutaln\u0105 jasno\u015Bci\u0105 to, na co jest skierowany, i pogr\u0105\u017Ca w ciemno\u015Bci reszt\u0119.",
+      landscape: "Ciep\u0142o, ale inne ni\u017C w rado\u015Bci. Gor\u0105co. Ci\u015Bnienie. Co\u015B w \u015Brodku ro\u015Bnie i szuka uj\u015Bcia. Granica zosta\u0142a naruszona \u2014 i cia\u0142o to wie, zanim umys\u0142 zrozumie dlaczego. Jest poczucie \u00ABnie\u00BB \u2014 g\u0142\u0119bokie, cielesne, niepodwa\u017Calne. Nie \u00ABnie chc\u0119\u00BB \u2014 \u00ABNIE\u00BB.",
+      breath: "Mocny, przez nos, z widocznym wysi\u0142kiem. Jakby powietrze nie chcia\u0142o si\u0119 wpu\u015Bci\u0107 wystarczaj\u0105co szybko. Nozdrzowe.",
       grad: {
-        low: "Coś drażni. Nie jest warte walki — ale nie możesz tego ignorować. Szczęka lekko się napina.",
-        mid: "Energia idzie do przodu. Klatka się pręży. Widzisz jeden punkt — ostro, precyzyjnie.",
-        high: "Ciało nie może pomieścić energii. Wszystko jest za ciasne, za wolne. Jest tylko energia szukająca ujścia.",
+        low: "Co\u015B dra\u017Cni. Nie jest warte walki \u2014 ale nie mo\u017Cesz tego ignorowa\u0107. Szcz\u0119ka lekko si\u0119 napina.",
+        mid: "Energia idzie do przodu. Klatka si\u0119 pr\u0119\u017Cy. Widzisz jeden punkt \u2014 ostro, precyzyjnie.",
+        high: "Cia\u0142o nie mo\u017Ce pomie\u015Bci\u0107 energii. Wszystko jest za ciasne, za wolne. Jest tylko energia szukaj\u0105ca uj\u015Bcia.",
       },
     },
-    en: {
-      name: "Anger", short: "Anger", vector: "Forward, toward the target",
-      gradients: { low: "Annoyance", mid: "Anger", high: "Rage" },
-      body: "Energy goes forward. The chest puffs up, the jaw clenches, the hands have energy — not for hitting (that's too far), but for holding, grasping, establishing. The body takes up more space, but differently than in joy — joy expands in all directions, anger expands toward. There is a target. You may not know what yet — but the body already knows which direction.",
-      attention: "Very narrow, very sharp. Laser-like. Everything outside the object of anger loses focus, becomes irrelevant. You see one thing — and you see it with a penetration you normally don't possess. Anger is like a spotlight: it illuminates with brutal clarity what it's aimed at, and plunges the rest into darkness.",
-      landscape: "Warmth, but different from joy. Heat. Pressure. Something inside is growing and seeking an outlet. A boundary was violated — and the body knows this before the mind understands why. There is a sense of 'no' — deep, bodily, unquestionable. Not 'I don't want' — 'NO.'",
-      breath: "Strong, through the nose, with visible effort. As if the air wouldn't come in fast enough. Nostrils flaring.",
+    de: {
+      name: "Wut", short: "Wut", vector: "Nach vorne, auf das Ziel zu",
+      gradients: { low: "Reizung", mid: "Wut", high: "Raserei" },
+      body: "Die Energie geht nach vorne. Der Brustkorb richtet sich auf, der Kiefer spannt sich, die H\u00E4nde haben Energie \u2014 nicht zum Schlagen (das ist zu weit), sondern zum Halten, Greifen, Festlegen. Der K\u00F6rper nimmt mehr Raum ein, aber anders als bei Freude \u2014 Freude dehnt sich in alle Richtungen aus, Wut dehnt sich hin zu. Es gibt ein Ziel. Vielleicht wei\u00DFt du noch nicht welches \u2014 aber der K\u00F6rper wei\u00DF schon die Richtung.",
+      attention: "Sehr eng, sehr scharf. Wie ein Laser. Alles au\u00DFerhalb des Objekts der Wut verliert an Sch\u00E4rfe, wird irrelevant. Du siehst eines \u2014 und du siehst es mit einer Durchdringung, die du normalerweise nicht besitzt. Wut ist wie ein Scheinwerfer: sie beleuchtet mit brutaler Klarheit, worauf sie gerichtet ist, und taucht den Rest in Dunkelheit.",
+      landscape: "W\u00E4rme, aber anders als bei Freude. Hitze. Druck. Etwas drinnen w\u00E4chst und sucht ein Ventil. Eine Grenze wurde verletzt \u2014 und der K\u00F6rper wei\u00DF das, bevor der Geist versteht warum. Es gibt ein Gef\u00FChl von \u00ABnein\u00BB \u2014 tief, k\u00F6rperlich, unumst\u00F6\u00DFlich. Nicht \u00ABich will nicht\u00BB \u2014 \u00ABNEIN\u00BB.",
+      breath: "Stark, durch die Nase, mit sichtbarer Anstrengung. Als wollte die Luft nicht schnell genug hinein. Nasenfl\u00FCgel bl\u00E4hen sich.",
       grad: {
-        low: "Something irritates. Not worth fighting — but you can't ignore it. The jaw tightens slightly.",
-        mid: "Energy goes forward. The chest puffs up. You see one point — sharp, precise.",
-        high: "The body cannot contain the energy. Everything is too tight, too slow. There is only energy seeking an outlet.",
+        low: "Etwas reizt. Nicht wert zu k\u00E4mpfen \u2014 aber du kannst es nicht ignorieren. Der Kiefer spannt sich leicht.",
+        mid: "Die Energie geht nach vorne. Der Brustkorb richtet sich auf. Du siehst einen Punkt \u2014 scharf, pr\u00E4zise.",
+        high: "Der K\u00F6rper kann die Energie nicht fassen. Alles ist zu eng, zu langsam. Es gibt nur Energie, die ein Ventil sucht.",
       },
     },
   },
   {
-    id: "ANTICIPATION", color: "#d87a2a", icon: "→",
+    id: "ANTICIPATION", color: "#d87a2a", icon: "\u2192",
     pl: {
       name: "Przeczuwanie", short: "Przeczu.", vector: "Do przodu, skanowanie",
-      gradients: { low: "Zainteresowanie", mid: "Przeczuwanie", high: "Czujność" },
-      body: "Ciężar przenosi się na przodostopy. Ciało pochyla się lekko do przodu — nie ku czemuś konkretnemu, ale ku temu, co będzie. Jest gotowość, sprężystość. Nie napięcie strachu — raczej napięcie łucznika, który naciągnął cięciwę i jeszcze nie puścił. Ciało jest zorganizowane, czujne, zestrzelone.",
-      attention: "Skanowanie. Oczy są aktywne, ale nie niespokojne — szukają z przyjemnością. Uwaga jest zorientowana na przyszłość: nie na to, co jest, ale na to, co zaraz się pojawi. Jest to jakość uwagi myśliwego, który widzi ślady i odczytuje kierunek.",
-      landscape: "Coś się zbliża. Jeszcze nie wiesz co — ale poruszasz się w jego stronę. W środku jest coś cienistego, lekkiego, naładowanego. Nie niepokój — elektryczność. Jakby powietrze przed burzą: nic się jeszcze nie dzieje, ale wszystko jest naładowane tym, że zaraz się wydarzy.",
-      breath: "Lekko wstrzymany. Nie z lęku — z gotowości. Oddech kogoś, kto nasłuchuje, kiedy usłyszy sygnał.",
+      gradients: { low: "Zainteresowanie", mid: "Przeczuwanie", high: "Czujno\u015B\u0107" },
+      body: "Ci\u0119\u017Car przenosi si\u0119 na przodostopy. Cia\u0142o pochyla si\u0119 lekko do przodu \u2014 nie ku czemu\u015B konkretnemu, ale ku temu, co b\u0119dzie. Jest gotowo\u015B\u0107, spr\u0119\u017Cysto\u015B\u0107. Nie napi\u0119cie strachu \u2014 raczej napi\u0119cie \u0142ucznika, kt\u00F3ry naci\u0105gn\u0105\u0142 ci\u0119ciw\u0119 i jeszcze nie pu\u015Bci\u0142. Cia\u0142o jest zorganizowane, czujne, zestrzelone.",
+      attention: "Skanowanie. Oczy s\u0105 aktywne, ale nie niespokojne \u2014 szukaj\u0105 z przyjemno\u015Bci\u0105. Uwaga jest zorientowana na przysz\u0142o\u015B\u0107: nie na to, co jest, ale na to, co zaraz si\u0119 pojawi. Jest to jako\u015B\u0107 uwagi my\u015Bliwego, kt\u00F3ry widzi \u015Blady i odczytuje kierunek.",
+      landscape: "Co\u015B si\u0119 zbli\u017Ca. Jeszcze nie wiesz co \u2014 ale poruszasz si\u0119 w jego stron\u0119. W \u015Brodku jest co\u015B cienistego, lekkiego, na\u0142adowanego. Nie niepok\u00F3j \u2014 elektryczno\u015B\u0107. Jakby powietrze przed burz\u0105: nic si\u0119 jeszcze nie dzieje, ale wszystko jest na\u0142adowane tym, \u017Ce zaraz si\u0119 wydarzy.",
+      breath: "Lekko wstrzymany. Nie z l\u0119ku \u2014 z gotowo\u015Bci. Oddech kogo\u015B, kto nas\u0142uchuje, kiedy us\u0142yszy sygna\u0142.",
       grad: {
-        low: "Coś przyciąga uwagę — lekko, bez naglenia. Oczy się ożywiają. Jest ciekawość.",
-        mid: "Ciężar na przodostopach. Ciało pochyla się ku temu, co będzie. Oczy skanują — aktywnie, z przyjemnością.",
-        high: "Każdy zmysł jest wyostrzony do maksimum. Ciało jest zestrzelone — jak łucznik przed puszczeniem cięciwy.",
+        low: "Co\u015B przyci\u0105ga uwag\u0119 \u2014 lekko, bez naglenia. Oczy si\u0119 o\u017Cywiaj\u0105. Jest ciekawo\u015B\u0107.",
+        mid: "Ci\u0119\u017Car na przodostopach. Cia\u0142o pochyla si\u0119 ku temu, co b\u0119dzie. Oczy skanuj\u0105 \u2014 aktywnie, z przyjemno\u015Bci\u0105.",
+        high: "Ka\u017Cdy zmys\u0142 jest wyostrzony do maksimum. Cia\u0142o jest zestrzelone \u2014 jak \u0142ucznik przed puszczeniem ci\u0119ciwy.",
       },
     },
-    en: {
-      name: "Anticipation", short: "Anticip.", vector: "Forward, scanning",
-      gradients: { low: "Interest", mid: "Anticipation", high: "Vigilance" },
-      body: "Weight shifts to the balls of the feet. The body leans slightly forward — not toward something specific, but toward what will be. There is readiness, springiness. Not the tension of fear — rather the tension of an archer who has drawn the bowstring and not yet released. The body is organized, alert, aligned.",
-      attention: "Scanning. Eyes are active but not anxious — they search with pleasure. Attention is oriented toward the future: not what is, but what is about to appear. It's the quality of attention of a hunter who sees tracks and reads direction.",
-      landscape: "Something is approaching. You don't know what yet — but you're moving toward it. Inside there is something thin, light, charged. Not anxiety — electricity. Like the air before a storm: nothing has happened yet, but everything is charged with the fact that something is about to.",
-      breath: "Slightly held. Not from fear — from readiness. The breath of someone listening for a signal.",
+    de: {
+      name: "Erwartung", short: "Erwart.", vector: "Nach vorne, abtastend",
+      gradients: { low: "Interesse", mid: "Erwartung", high: "Wachsamkeit" },
+      body: "Das Gewicht verlagert sich auf die Fu\u00DFballen. Der K\u00F6rper neigt sich leicht nach vorne \u2014 nicht zu etwas Bestimmtem, sondern zu dem, was kommen wird. Es gibt Bereitschaft, Federkraft. Nicht die Spannung der Angst \u2014 eher die Spannung eines Bogensch\u00FCtzen, der die Sehne gespannt hat und noch nicht losgelassen hat. Der K\u00F6rper ist organisiert, wachsam, ausgerichtet.",
+      attention: "Abtasten. Die Augen sind aktiv, aber nicht unruhig \u2014 sie suchen mit Vergn\u00FCgen. Die Aufmerksamkeit ist auf die Zukunft gerichtet: nicht auf das, was ist, sondern auf das, was gleich erscheinen wird. Es ist die Aufmerksamkeitsqualit\u00E4t eines J\u00E4gers, der Spuren sieht und die Richtung liest.",
+      landscape: "Etwas n\u00E4hert sich. Du wei\u00DFt noch nicht was \u2014 aber du bewegst dich darauf zu. Innen ist etwas D\u00FCnnes, Leichtes, Geladenes. Keine Unruhe \u2014 Elektrizit\u00E4t. Wie die Luft vor einem Gewitter: nichts geschieht noch, aber alles ist geladen mit dem, was gleich passieren wird.",
+      breath: "Leicht angehalten. Nicht aus Angst \u2014 aus Bereitschaft. Der Atem von jemandem, der auf ein Signal lauscht.",
       grad: {
-        low: "Something catches attention — lightly, without urgency. Eyes come alive. There is curiosity.",
-        mid: "Weight on the balls of the feet. The body leans toward what will be. Eyes scan — actively, with pleasure.",
-        high: "Every sense is sharpened to the maximum. The body is aligned — like an archer before releasing the bowstring.",
+        low: "Etwas zieht die Aufmerksamkeit an \u2014 leicht, ohne Dr\u00E4ngen. Die Augen werden lebendig. Da ist Neugier.",
+        mid: "Gewicht auf den Fu\u00DFballen. Der K\u00F6rper neigt sich dem entgegen, was kommen wird. Die Augen tasten ab \u2014 aktiv, mit Vergn\u00FCgen.",
+        high: "Jeder Sinn ist maximal gesch\u00E4rft. Der K\u00F6rper ist ausgerichtet \u2014 wie ein Bogensch\u00FCtze vor dem Loslassen der Sehne.",
       },
     },
   },
@@ -457,26 +457,26 @@ const EMOTIONS = [
 
 // ─── DYADS ──────────────────────────────────────────────────────────────────
 const DYADS = {
-  "ANGER+ANTICIPATION": { pl: "Agresja", en: "Aggression", type: "primary" },
-  "ANTICIPATION+JOY": { pl: "Optymizm", en: "Optimism", type: "primary" },
-  "JOY+TRUST": { pl: "Miłość", en: "Love", type: "primary" },
-  "FEAR+TRUST": { pl: "Uległość", en: "Submission", type: "primary" },
-  "FEAR+SURPRISE": { pl: "Poruszenie", en: "Awe", type: "primary" },
-  "SADNESS+SURPRISE": { pl: "Rozczarowanie", en: "Disapproval", type: "primary" },
-  "DISGUST+SADNESS": { pl: "Żal", en: "Remorse", type: "primary" },
-  "ANGER+DISGUST": { pl: "Pogarda", en: "Contempt", type: "primary" },
-  "FEAR+JOY": { pl: "Poczucie winy", en: "Guilt", type: "secondary" },
-  "SURPRISE+TRUST": { pl: "Ciekawość", en: "Curiosity", type: "secondary" },
-  "FEAR+SADNESS": { pl: "Rozpacz", en: "Despair", type: "secondary" },
-  "DISGUST+SURPRISE": { pl: "Szok", en: "Shock", type: "secondary" },
-  "ANGER+SADNESS": { pl: "Cierpienie", en: "Suffering", type: "secondary" },
-  "ANTICIPATION+DISGUST": { pl: "Cynizm", en: "Cynicism", type: "secondary" },
-  "ANGER+JOY": { pl: "Duma", en: "Pride", type: "secondary" },
-  "ANTICIPATION+TRUST": { pl: "Fatalizm", en: "Fatalism", type: "secondary" },
-  "JOY+SADNESS": { pl: "Konflikt", en: "Conflict", type: "opposite" },
-  "DISGUST+TRUST": { pl: "Konflikt", en: "Conflict", type: "opposite" },
-  "ANGER+FEAR": { pl: "Konflikt", en: "Conflict", type: "opposite" },
-  "ANTICIPATION+SURPRISE": { pl: "Konflikt", en: "Conflict", type: "opposite" },
+  "ANGER+ANTICIPATION": { pl: "Agresja", de: "Aggression", type: "primary" },
+  "ANTICIPATION+JOY": { pl: "Optymizm", de: "Optimismus", type: "primary" },
+  "JOY+TRUST": { pl: "Mi\u0142o\u015B\u0107", de: "Liebe", type: "primary" },
+  "FEAR+TRUST": { pl: "Uleg\u0142o\u015B\u0107", de: "Unterwerfung", type: "primary" },
+  "FEAR+SURPRISE": { pl: "Poruszenie", de: "Ehrfurcht", type: "primary" },
+  "SADNESS+SURPRISE": { pl: "Rozczarowanie", de: "Missbilligung", type: "primary" },
+  "DISGUST+SADNESS": { pl: "\u017Bal", de: "Reue", type: "primary" },
+  "ANGER+DISGUST": { pl: "Pogarda", de: "Verachtung", type: "primary" },
+  "FEAR+JOY": { pl: "Poczucie winy", de: "Schuld", type: "secondary" },
+  "SURPRISE+TRUST": { pl: "Ciekawo\u015B\u0107", de: "Neugier", type: "secondary" },
+  "FEAR+SADNESS": { pl: "Rozpacz", de: "Verzweiflung", type: "secondary" },
+  "DISGUST+SURPRISE": { pl: "Szok", de: "Schock", type: "secondary" },
+  "ANGER+SADNESS": { pl: "Cierpienie", de: "Leiden", type: "secondary" },
+  "ANTICIPATION+DISGUST": { pl: "Cynizm", de: "Zynismus", type: "secondary" },
+  "ANGER+JOY": { pl: "Duma", de: "Stolz", type: "secondary" },
+  "ANTICIPATION+TRUST": { pl: "Fatalizm", de: "Fatalismus", type: "secondary" },
+  "JOY+SADNESS": { pl: "Konflikt", de: "Konflikt", type: "opposite" },
+  "DISGUST+TRUST": { pl: "Konflikt", de: "Konflikt", type: "opposite" },
+  "ANGER+FEAR": { pl: "Konflikt", de: "Konflikt", type: "opposite" },
+  "ANTICIPATION+SURPRISE": { pl: "Konflikt", de: "Konflikt", type: "opposite" },
 };
 
 function getDyad(id1, id2) {
@@ -577,6 +577,9 @@ function renderModal(emotionId) {
   const d = em(emotion);
   const g = d.gradients;
 
+  // For the alternate language name in modal
+  const altLang = lang === 'pl' ? 'de' : 'pl';
+
   const sections = [
     { id: 'body', label: t('secBody'), text: d.body },
     { id: 'attention', label: t('secAttention'), text: d.attention },
@@ -630,10 +633,10 @@ function renderModal(emotionId) {
       <div>
         <div style="font-size:28px;margin-bottom:4px;color:${emotion.color}">${emotion.icon}</div>
         <div style="font-size:30px;font-weight:700;color:${emotion.color};font-family:'Playfair Display',Georgia,serif">${d.name}</div>
-        <div style="font-family:'DM Mono',monospace;font-size:12px;color:#807c74;letter-spacing:1px">${lang === 'pl' ? emotion.en.name : emotion.pl.name}</div>
+        <div style="font-family:'DM Mono',monospace;font-size:12px;color:#807c74;letter-spacing:1px">${emotion[altLang].name}</div>
         <div style="font-size:13px;color:#807c74;margin-top:3px;font-weight:400">${d.vector}</div>
       </div>
-      <button onclick="closeModal()" aria-label="${t('close')}" style="background:none;border:none;color:#807c74;font-size:26px;cursor:pointer;padding:4px 10px;font-family:'DM Mono',monospace;min-width:48px;min-height:48px;display:flex;align-items:center;justify-content:center">×</button>
+      <button onclick="closeModal()" aria-label="${t('close')}" style="background:none;border:none;color:#807c74;font-size:26px;cursor:pointer;padding:4px 10px;font-family:'DM Mono',monospace;min-width:48px;min-height:48px;display:flex;align-items:center;justify-content:center">\u00D7</button>
     </div>
     <div style="display:flex;gap:0;padding:0 22px;border-bottom:1px solid #1a1a24">
       <button onclick="modalTab='soma';renderModal('${emotionId}')" style="${tabBtnStyle('soma')}">${t('tabSoma')}</button>
@@ -650,7 +653,7 @@ function renderModal(emotionId) {
       `}
     </div>
     <div style="padding:16px 22px 22px;display:flex;gap:10px;align-items:flex-start">
-      <span style="color:#a85a48;font-size:16px;flex-shrink:0;margin-top:2px">◉</span>
+      <span style="color:#a85a48;font-size:16px;flex-shrink:0;margin-top:2px">\u25C9</span>
       <span style="font-size:13px;line-height:1.7;color:#807c74;font-weight:300">${t('safetyNote')}</span>
     </div>
   `;
@@ -691,7 +694,6 @@ function renderContent() {
         <div class="wv-hint">${t('wheelHint')}</div>
       </div>
     `;
-    // Attach click handlers to wheel petals
     cnt.querySelectorAll('[data-eid]').forEach(g => {
       g.addEventListener('click', () => openModal(g.dataset.eid));
       g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(g.dataset.eid); } });
@@ -703,21 +705,19 @@ function renderContent() {
 
 function renderDrawView() {
   const cnt = document.getElementById('app-cnt');
+  const altLang = lang === 'pl' ? 'de' : 'pl';
   let html = '<div class="dv">';
 
-  // Toggle
   html += `<div class="dv-toggle">
     <button class="${drawMode === 'single' ? 'on' : ''}" onclick="drawMode='single';drawResult=null;renderDrawView()">${t('solo')}</button>
     <button class="${drawMode === 'pair' ? 'on' : ''}" onclick="drawMode='pair';drawResult=null;renderDrawView()">${t('pair')}</button>
   </div>`;
 
-  // Wheel
   html += renderWheelSVG({
     drawnIds: drawResult ? drawResult.ids : undefined,
     spinClass: spinning ? 'wheel-spin' : ''
   });
 
-  // Result
   if (drawResult) {
     html += '<div class="fade-in" style="text-align:center;margin-top:18px">';
     if (drawResult.type === 'single') {
@@ -729,7 +729,7 @@ function renderDrawView() {
         padding:10px 18px;cursor:pointer;transition:all .22s;color:${e.color};
       ">
         <div style="font-size:38px;font-weight:700;font-family:'Playfair Display',Georgia,serif">${d.name}</div>
-        <div style="font-family:'DM Mono',monospace;font-size:12px;opacity:.45;letter-spacing:1px">${lang === 'pl' ? e.en.name : e.pl.name}</div>
+        <div style="font-family:'DM Mono',monospace;font-size:12px;opacity:.45;letter-spacing:1px">${e[altLang].name}</div>
         <div style="font-size:13px;color:#807c74;margin:10px 0">${d.vector}</div>
         <span style="font-size:11px;opacity:.45">${t('touchHint')}</span>
       </button>`;
@@ -739,13 +739,13 @@ function renderDrawView() {
       html += `<div style="display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:14px">
         <button onclick="openModal('${e1.id}')" style="display:inline-flex;flex-direction:column;align-items:center;background:none;border:1px solid transparent;border-radius:10px;padding:10px 18px;cursor:pointer;color:${e1.color}">
           <div style="font-size:30px;font-weight:700;font-family:'Playfair Display',Georgia,serif">${d1.name}</div>
-          <div style="font-family:'DM Mono',monospace;font-size:11px;opacity:.45">${lang === 'pl' ? e1.en.name : e1.pl.name}</div>
+          <div style="font-family:'DM Mono',monospace;font-size:11px;opacity:.45">${e1[altLang].name}</div>
           <span style="font-size:11px;opacity:.45;margin-top:4px">${t('touchHint')}</span>
         </button>
-        <div style="font-family:'DM Mono',monospace;font-size:22px;color:#807c74">×</div>
+        <div style="font-family:'DM Mono',monospace;font-size:22px;color:#807c74">\u00D7</div>
         <button onclick="openModal('${e2.id}')" style="display:inline-flex;flex-direction:column;align-items:center;background:none;border:1px solid transparent;border-radius:10px;padding:10px 18px;cursor:pointer;color:${e2.color}">
           <div style="font-size:30px;font-weight:700;font-family:'Playfair Display',Georgia,serif">${d2.name}</div>
-          <div style="font-family:'DM Mono',monospace;font-size:11px;opacity:.45">${lang === 'pl' ? e2.en.name : e2.pl.name}</div>
+          <div style="font-family:'DM Mono',monospace;font-size:11px;opacity:.45">${e2[altLang].name}</div>
           <span style="font-size:11px;opacity:.45;margin-top:4px">${t('touchHint')}</span>
         </button>
       </div>`;
@@ -794,11 +794,10 @@ function setLang(l) {
   lang = l;
   document.documentElement.lang = l;
   document.getElementById('lang-pl').className = l === 'pl' ? 'on' : '';
-  document.getElementById('lang-en').className = l === 'en' ? 'on' : '';
+  document.getElementById('lang-de').className = l === 'de' ? 'on' : '';
   document.querySelector('.app-hdr-top').textContent = t('hdrTop');
   document.getElementById('hdr-title').innerHTML = t('hdrTitle');
   document.getElementById('footer-text').textContent = t('footer');
-  // Re-render dyad if present
   if (drawResult && drawResult.type === 'pair') {
     drawResult.dyad = getDyad(drawResult.e1.id, drawResult.e2.id);
   }
